@@ -3,302 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>倫敦深度旅遊行程表 - 2026</title>
+    <title>2026 倫敦精華行程與導航</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
-        :root {
-            --primary-blue: #00247d;
-            --british-red: #cf142b;
-            --accent-gold: #b3995d;
-            --bg-gray: #f8f9fa;
-            --text-dark: #2d3436;
-        }
-
-        body {
-            font-family: -apple-system, "Segoe UI", "Microsoft JhengHei", sans-serif;
-            background-color: var(--bg-gray);
-            color: var(--text-dark);
-            margin: 0;
-            padding: 15px;
-            line-height: 1.5;
-        }
-
-        .day-container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            margin-bottom: 25px;
-            overflow: hidden;
-            border-left: 6px solid var(--primary-blue);
-        }
-
-        .day-header {
-            background-color: var(--primary-blue);
-            color: white;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .day-header h2 { margin: 0; font-size: 1.25rem; }
-        .hotel-tag { background: rgba(255,255,255,0.2); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem; }
-
-        .item-row {
-            display: flex;
-            padding: 15px;
-            border-bottom: 1px solid #edf2f7;
-        }
-
-        .time-col {
-            width: 85px;
-            font-weight: bold;
-            color: var(--british-red);
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-
-        .content-col { flex-grow: 1; }
-
-        .activity-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 5px; color: #000; }
+        body { background-color: #f4f7f9; font-family: "PingFang TC", "Microsoft JhengHei", sans-serif; }
+        .day-section { margin-bottom: 4rem; }
+        .day-header { background: #00247d; color: white; border-radius: 10px 10px 0 0; padding: 1.2rem 1.5rem; }
+        .itinerary-card { border: none; border-radius: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .list-group-item { cursor: pointer; transition: background 0.2s; padding: 1.1rem; border-left: none; border-right: none; }
+        .list-group-item:hover { background-color: #f1f4f9; }
+        .time-label { font-weight: bold; color: #cf142b; min-width: 95px; display: inline-block; }
+        .hotel-info { font-size: 0.85rem; background: #fff3cd; padding: 4px 12px; border-radius: 20px; color: #856404; }
         
-        .transport-box {
-            background: #f1f3f5;
-            padding: 10px;
-            border-radius: 6px;
-            margin: 8px 0;
-            font-size: 0.85rem;
-            border-left: 3px solid #636e72;
-        }
-
-        .highlight-list {
-            margin: 5px 0;
-            padding-left: 18px;
-            font-size: 0.9rem;
-            color: #444;
-        }
-
-        .tag-restaurant { color: #e67e22; font-weight: bold; }
-        .tag-museum { color: #2980b9; font-weight: bold; }
-
-        @media (max-width: 480px) {
-            .item-row { flex-direction: column; }
-            .time-col { margin-bottom: 5px; }
-        }
+        /* 交通區塊樣式 */
+        .transport-footer { background: #e9ecef; border-radius: 0 0 10px 10px; padding: 1.5rem; border-top: 2px solid #dee2e6; }
+        .nav-step { border-left: 3px dashed #00247d; margin-left: 10px; padding-left: 20px; position: relative; padding-bottom: 15px; }
+        .nav-step:last-child { padding-bottom: 0; }
+        .step-dot { width: 10px; height: 10px; background: #cf142b; border-radius: 50%; position: absolute; left: -6.5px; top: 5px; }
+        .line-badge { font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; font-weight: bold; color: white; margin-left: 5px; }
+        .piccadilly { background-color: #003688; }
+        .district { background-color: #00782a; }
+        .central { background-color: #e32017; }
+        .bus { background-color: #cf142b; }
     </style>
 </head>
 <body>
 
-    <h1 style="text-align:center; color:var(--primary-blue);">🇬🇧 倫敦行程詳情表</h1>
+<div class="container py-5">
+    <h1 class="text-center mb-5 fw-bold"><i class="bi bi-geo-alt-fill text-danger"></i> 2026 倫敦精華行程與導航</h1>
 
-    <!-- Day 2 -->
-    <div class="day-container">
-        <div class="day-header">
-            <h2>Day 2 (6/7 日) 經典西敏與大英</h2>
-            <span class="hotel-tag">住: Trebovir Hotel</span>
+    <div class="day-section">
+        <div class="day-header d-flex justify-content-between align-items-center">
+            <h2 class="h4 mb-0">Day 2 (6/7) 大英博物館</h2>
+            <span class="hotel-info">住宿：Trebovir Hotel</span>
         </div>
-        
-        <div class="item-row">
-            <div class="time-col">08:30-09:40</div>
-            <div class="content-col">
-                <div class="activity-title tag-restaurant">早餐: Victoria House Coffee & Food</div>
-                <div class="transport-box">地鐵: Earl's Court → Holborn (Piccadilly Line)</div>
-            </div>
-        </div>
-
-        <div class="item-row">
-            <div class="time-col">10:00-12:20</div>
-            <div class="content-col">
-                <div class="activity-title tag-museum">大英博物館 (British Museum)</div>
-                <ul class="highlight-list">
-                    <li>必看: 羅塞塔、拉美西斯、木乃伊、獵獅、帕德嫩、摩艾</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="item-row">
-            <div class="time-col">13:45-15:00</div>
-            <div class="content-col">
-                <div class="activity-title tag-restaurant">午餐: Blacklock Covent Garden</div>
-                <div class="transport-box">公車: Stephen Street (Stop B) 搭 29/24 路</div>
-            </div>
-        </div>
-
-        <div class="item-row">
-            <div class="time-col">15:35-17:20</div>
-            <div class="content-col">
-                <div class="activity-title">南岸漫步 & 大笨鐘</div>
-                <div class="highlight-list">沿河岸觀賞 London Eye、Big Ben 並走過西敏橋</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Day 4 -->
-    <div class="day-container" style="border-left-color: var(--accent-gold);">
-        <div class="day-header" style="background-color: var(--accent-gold);">
-            <h2>Day 4 (6/9 二) 倫敦塔與金融區</h2>
-            <span class="hotel-tag">住: Trebovir Hotel</span>
-        </div>
-
-        <div class="item-row">
-            <div class="time-col">09:00-11:00</div>
-            <div class="content-col">
-                <div class="activity-title tag-museum">倫敦塔 (Tower of London)</div>
-                <div class="transport-box">地鐵: Earl's Court → Tower Hill (District Line)</div>
-                <div class="highlight-list">重點: 直攻珠寶館 (Jewel House) 看皇冠</div>
-            </div>
-        </div>
-
-        <div class="item-row">
-            <div class="time-col">11:45-14:00</div>
-            <div class="content-col">
-                <div class="activity-title tag-restaurant">波羅市場 (Borough Market)</div>
-                <div class="highlight-list">步行跨過倫敦塔橋 (Tower Bridge) 後前往</div>
-            </div>
-        </div>
-
-        <div class="item-row">
-            <div class="time-col">14:00-17:30</div>
-            <div class="content-col">
-                <div class="activity-title">女王步道、千禧橋、聖保羅大教堂</div>
-                <div class="highlight-list">拍攝聖保羅圓頂最佳視角；隨後進行 City 金融區探險</div>
-            </div>
-        </div>
-
-        <div class="item-row">
-            <div class="time-col">18:00-19:30</div>
-            <div class="content-col">
-                <div class="activity-title tag-restaurant">晚餐: Duck & Waffle</div>
-                <div class="highlight-list">位於 Heron Tower，一邊享用鴨肉鬆餅一邊看夕陽</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Day 5 -->
-    <div class="day-container">
-        <div class="day-header">
-            <h2>Day 5 (6/10 三) 皇室禮儀與藝術</h2>
-            <span class="hotel-tag">住: Trebovir Hotel</span>
-        </div>
-
-        <div class="item-row">
-            <div class="time-col">11:15-12:00</div>
-            <div class="content-col">
-                <div class="activity-title">白金漢宮 衛兵交接</div>
-                <div class="transport-box">地鐵: Earl's Court → Green Park</div>
-                <div class="highlight-list">建議在 Victoria Memorial 觀賞</div>
-            </div>
-        </div>
-
-        <div class="item-row">
-            <div class="time-col">13:45-16:15</div>
-            <div class="content-col">
-                <div class="activity-title tag-museum">國家美術館 (National Gallery)</div>
-                <div class="highlight-list">
-                    必看: 《阿諾菲尼的婚禮》、梵谷《向日葵》、達文西《岩窟聖母》
+        <div class="card itinerary-card">
+            <div class="list-group list-group-flush">
+                <div class="list-group-item" data-bs-toggle="modal" data-bs-target="#modalD2_1">
+                    <span class="time-label">08:30-09:40</span> 早餐：Victoria House
+                </div>
+                <div class="list-group-item" data-bs-toggle="modal" data-bs-target="#modalD2_2">
+                    <span class="time-label">10:00-12:20</span> 大英博物館 
+                </div>
+                <div class="list-group-item" data-bs-toggle="modal" data-bs-target="#modalD2_3">
+                    <span class="time-label">13:45-15:00</span> 午餐：Blacklock Covent Garden 
                 </div>
             </div>
         </div>
-
-        <div class="item-row">
-            <div class="time-col">19:30-22:15</div>
-            <div class="content-col">
-                <div class="activity-title">音樂劇: 悲慘世界</div>
-                <div class="transport-box">晚餐: 17:00 Bancone 義大利麵</div>
-                <div class="highlight-list">演出地點: Sondheim Theatre</div>
+        <div class="transport-footer">
+            <h6 class="fw-bold mb-3"><i class="bi bi-signpost-split-fill text-primary"></i> 景點間交通指引</h6>
+            <div class="nav-step">
+                <div class="step-dot"></div>
+                <strong>前往博物館：</strong>Earl's Court ➔ Holborn <span class="line-badge piccadilly">Piccadilly Line</span>
+                <div class="small text-muted">注意：不要在 Russell Square 下車，樓梯極多 。</div>
+            </div>
+            <div class="nav-step">
+                <div class="step-dot"></div>
+                <strong>前往午餐：</strong>Stephen Street (Stop B) ➔ St Martin's Place (Stop K) <span class="line-badge bus">Bus 29/24</span>
+                <div class="small text-muted">公車時間約 15 分鐘，下車步行 5 分鐘抵達 。</div>
             </div>
         </div>
     </div>
 
-    <!-- Day 6 -->
-    <div class="day-container">
-        <div class="day-header">
-            <h2>Day 6 (6/11 四) V&A 藝術與百貨</h2>
-            <span class="hotel-tag">住: Trebovir Hotel</span>
+    <div class="day-section">
+        <div class="day-header d-flex justify-content-between align-items-center" style="background: #b3995d;">
+            <h2 class="h4 mb-0">Day 4 (6/9) 倫敦塔與金融區</h2>
+            <span class="hotel-info">住宿：Trebovir Hotel</span>
         </div>
-
-        <div class="item-row">
-            <div class="time-col">10:00-13:00</div>
-            <div class="content-col">
-                <div class="activity-title tag-museum">V&A 博物館</div>
-                <div class="highlight-list">
-                    重點: Gamble Room 早午餐、拉斐爾大畫、珠寶展廳
+        <div class="card itinerary-card">
+            <div class="list-group list-group-flush">
+                <div class="list-group-item" data-bs-toggle="modal" data-bs-target="#modalD4_1">
+                    <span class="time-label">09:20-11:00</span> 倫敦塔 (Tower of London) [cite: 454]
+                </div>
+                <div class="list-group-item" data-bs-toggle="modal" data-bs-target="#modalD4_2">
+                    <span class="time-label">14:00-15:30</span> 女王步道 ➔ 聖保羅教堂 [cite: 454]
                 </div>
             </div>
         </div>
-
-        <div class="item-row">
-            <div class="time-col">13:45-14:45</div>
-            <div class="content-col">
-                <div class="activity-title">哈洛德百貨 (Harrods)</div>
-                <div class="highlight-list">重點逛 Food Hall 食品大廳裝潢與伴手禮</div>
+        <div class="transport-footer">
+            <h6 class="fw-bold mb-3"><i class="bi bi-signpost-split-fill text-primary"></i> 景點間交通指引</h6>
+            <div class="nav-step">
+                <div class="step-dot"></div>
+                <strong>前往倫敦塔：</strong>Earl's Court ➔ Tower Hill <span class="line-badge district">District Line</span>
+                <div class="small text-muted">車程預計約 25-30 分鐘 [cite: 94, 457]。</div>
             </div>
-        </div>
-
-        <div class="item-row">
-            <div class="time-col">19:30-22:00</div>
-            <div class="content-col">
-                <div class="activity-title">音樂劇: 歌劇魅影</div>
-                <div class="transport-box">晚餐: 17:20 Burger & Lobster (Leicester Square)</div>
+            <div class="nav-step">
+                <div class="step-dot"></div>
+                <strong>前往波羅市場：</strong>步行跨越倫敦塔橋 (Tower Bridge)
+                <div class="small text-muted">步行時間約 15 分鐘 。</div>
             </div>
         </div>
     </div>
 
-    <!-- Day 7 -->
-    <div class="day-container">
-        <div class="day-header">
-            <h2>Day 7 (6/12 五) 格林威治河岸之旅</h2>
-            <span class="hotel-tag">住: Trebovir Hotel</span>
+    <div class="day-section">
+        <div class="day-header d-flex justify-content-between align-items-center" style="background: #6c757d;">
+            <h2 class="h4 mb-0">Day 6 (6/11) V&A 藝術與柯芬園</h2>
+            <span class="hotel-info">住宿：Trebovir Hotel</span>
         </div>
-
-        <div class="item-row">
-            <div class="time-col">10:00-10:45</div>
-            <div class="content-col">
-                <div class="activity-title">泰晤士河遊船 (Uber Boat RB1)</div>
-                <div class="highlight-list">Westminster Pier → Greenwich Pier</div>
+        <div class="card itinerary-card">
+            <div class="list-group list-group-flush">
+                <div class="list-group-item" data-bs-toggle="modal" data-bs-target="#modalD6_1">
+                    <span class="time-label">10:00-13:00</span> V&A 參觀 [cite: 521]
+                </div>
+                <div class="list-group-item" data-bs-toggle="modal" data-bs-target="#modalD6_2">
+                    <span class="time-label">15:15-17:00</span> 柯芬園散步 [cite: 521]
+                </div>
             </div>
         </div>
-
-        <div class="item-row">
-            <div class="time-col">11:00-14:30</div>
-            <div class="content-col">
-                <div class="activity-title">格林威治皇家天文台 & 市集</div>
-                <div class="highlight-list">跨越本初子午線、逛格林威治市集午餐</div>
+        <div class="transport-footer">
+            <h6 class="fw-bold mb-3"><i class="bi bi-signpost-split-fill text-primary"></i> 景點間交通指引</h6>
+            <div class="nav-step">
+                <div class="step-dot"></div>
+                <strong>前往 Harrods：</strong>Victoria & Albert Museum (Stop N) ➔ Harrods (Stop KA) <span class="line-badge bus">Bus 14/74/414</span>
+                <div class="small text-muted">公車 2 站，步行約 12 分鐘可達 [cite: 521, 531]。</div>
             </div>
-        </div>
-    </div>
-
-    <!-- Day 8 -->
-    <div class="day-container" style="border-left-color: var(--british-red);">
-        <div class="day-header" style="background-color: var(--british-red);">
-            <h2>Day 8 (6/13 六) 諾丁丘與啟程</h2>
-            <span class="hotel-tag">返回台灣</span>
-        </div>
-
-        <div class="item-row">
-            <div class="time-col">09:30-11:30</div>
-            <div class="content-col">
-                <div class="activity-title">波多貝羅市集 (Portobello Market)</div>
-                <div class="highlight-list">朝聖彩色房子與《諾丁山》電影書店</div>
-            </div>
-        </div>
-
-        <div class="item-row">
-            <div class="time-col">12:00-14:00</div>
-            <div class="content-col">
-                <div class="activity-title tag-restaurant">最後午餐: Hawksmoor Air Street</div>
-                <div class="highlight-list">享用 35 天乾式熟成牛排</div>
-            </div>
-        </div>
-
-        <div class="item-row">
-            <div class="time-col">17:15-18:10</div>
-            <div class="content-col">
-                <div class="activity-title">前往希斯洛機場 (T3)</div>
-                <div class="transport-box">地鐵: Earl's Court → Heathrow (Piccadilly Line)</div>
-                <div class="highlight-list">班機 CI82 於 21:10 起飛</div>
+            <div class="nav-step">
+                <div class="step-dot"></div>
+                <strong>前往柯芬園：</strong>Knightsbridge ➔ Leicester Square <span class="line-badge piccadilly">Piccadilly Line</span>
+                <div class="small text-muted">注意：Covent Garden 站樓梯多，建議由 Leicester Square 出站 。</div>
             </div>
         </div>
     </div>
 
+    <div class="day-section">
+        <div class="day-header d-flex justify-content-between align-items-center" style="background: #343a40;">
+            <h2 class="h4 mb-0">Day 8 (6/13) 諾丁丘與啟程</h2>
+            <span class="hotel-info">航班：CI82 (21:10)</span>
+        </div>
+        <div class="card itinerary-card">
+            <div class="list-group list-group-flush">
+                <div class="list-group-item" data-bs-toggle="modal" data-bs-target="#modalD8_1">
+                    <span class="time-label">09:30-11:30</span> 波多貝羅市集 [cite: 567]
+                </div>
+                <div class="list-group-item" data-bs-toggle="modal" data-bs-target="#modalD8_2">
+                    <span class="time-label">12:00-14:00</span> 午餐：Hawksmoor [cite: 568]
+                </div>
+            </div>
+        </div>
+        <div class="transport-footer text-danger fw-bold">
+            <h6 class="fw-bold mb-3 text-dark"><i class="bi bi-airplane-fill text-primary"></i> 返台機場交通</h6>
+            <div class="nav-step">
+                <div class="step-dot"></div>
+                16:30 前回飯店取行李 ➔ Earl's Court ➔ Heathrow T3 <span class="line-badge piccadilly">Piccadilly Line</span>
+                <div class="small">車程 45-50 分鐘，請確保搭乘往機場方向的列車 [cite: 570, 599]。</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
