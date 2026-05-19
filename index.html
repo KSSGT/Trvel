@@ -1,1621 +1,1921 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-TW">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2026 倫敦行程</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 倫敦行程 | London Itinerary 2026</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <style>
-      body {
-        background-color: #f4f7f9;
-        font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
-        padding-bottom: 50px;
-      }
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&amp;family=Inter:wght@400;500;600&amp;display=swap');
+        
+        :root {
+            --primary-red: #cf142b;
+            --uk-blue: #00247d;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            font-family: "Noto Sans TC", "Inter", "PingFang TC", "Microsoft JhengHei", sans-serif;
+            padding-bottom: 80px;
+        }
+        
+        .navbar {
+            background: linear-gradient(90deg, #00247d, #1a3c6e);
+            box-shadow: 0 4px 12px rgba(0, 36, 125, 0.3);
+        }
+        
+        .day-header {
+            background: linear-gradient(135deg, #00247d, #1a3c6e);
+            color: white;
+            border-radius: 16px 16px 0 0;
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 6px 16px rgba(0, 36, 125, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .day-header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 40%;
+            height: 200%;
+            background: rgba(255,255,255,0.08);
+            transform: skewX(-25deg);
+        }
+        
+        .day-header.day3 { background: linear-gradient(135deg, #1c7252, #145c42); }
+        .day-header.day4 { background: linear-gradient(135deg, #b3995d, #8c7749); }
+        .day-header.day5 { background: linear-gradient(135deg, #cf142b, #a50f22); }
+        .day-header.day6 { background: linear-gradient(135deg, #6c757d, #495057); }
+        .day-header.day7 { background: linear-gradient(135deg, #20c997, #17a88a); }
+        .day-header.day8 { background: linear-gradient(135deg, #343a40, #212529); }
+        
+        .itinerary-card {
+            border: none;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1.1rem 1.5rem;
+            border-bottom: 1px solid #f1f3f5;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .timeline-item:hover {
+            background-color: #f8f9fa;
+            transform: translateX(4px);
+        }
+        
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+        
+        .time-label {
+            font-weight: 700;
+            color: #cf142b;
+            min-width: 118px;
+            font-size: 0.95rem;
+            font-variant-numeric: tabular-nums;
+            flex-shrink: 0;
+        }
+        
+        .activity-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .transport-btn {
+            width: 100%;
+            text-align: left;
+            padding: 14px 1.5rem;
+            background: #f0f4f8;
+            border: none;
+            font-size: 0.92rem;
+            color: #00247d;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        
+        .transport-btn:hover {
+            background: #e2e8f0;
+        }
+        
+        .transport-content {
+            padding: 16px 2rem;
+            background: #ffffff;
+            border-left: 5px solid #00247d;
+            font-size: 0.9rem;
+            color: #495057;
+            line-height: 1.6;
+        }
+        
+        .line-badge {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            color: white;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin: 0 4px;
+        }
+        
+        .piccadilly { background-color: #003688; }
+        .district { background-color: #00782a; }
+        .central { background-color: #e32017; }
+        .bus { background-color: #cf142b; }
+        .dlr { background-color: #00afad; }
+        
+        .modal-header {
+            border-bottom: none;
+            padding: 1.25rem 1.5rem;
+        }
+        
+        .restaurant-box {
+            background: #fff8e1;
+            border-left: 5px solid #ffc107;
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #00247d;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .nav-pills .nav-link.active {
+            background-color: #00247d;
+            color: white;
+        }
+        
+        .footer {
+            background: #00247d;
+            color: #a8b3c7;
+            font-size: 0.85rem;
+        }
+        
+        .map-btn {
+            transition: all 0.2s;
+        }
+        
+        .map-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 36, 125, 0.3);
+        }
+        
+        .timeline-time {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #6c757d;
+        }
 
-      .day-section {
-        margin-bottom: 3rem;
-      }
+        .traffic {
+            background: #eef2f7;
+        }
 
-      .day-header {
-        background: #00247d;
-        color: white;
-        border-radius: 12px 12px 0 0;
-        padding: 1.2rem 1.5rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      .itinerary-card {
-        border: none;
-        border-radius: 0 0 12px 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      }
-
-      .list-group-item {
-        cursor: pointer;
-        transition: background 0.2s;
-        padding: 1.2rem 1.5rem;
-        border-left: none;
-        border-right: none;
-        border-bottom: 1px solid #f0f0f0;
-        display: flex;
-        align-items: center;
-      }
-
-      .list-group-item:hover {
-        background-color: #f0f4f8;
-      }
-
-      .time-label {
-        font-weight: bold;
-        color: #cf142b;
-        min-width: 125px;
-        display: inline-block;
-        font-variant-numeric: tabular-nums;
-        font-size: 0.95rem;
-      }
-
-      /* 交通導航摺疊 */
-      .transport-divider {
-        background-color: #f8f9fa;
-        border-top: 1px solid #edf2f7;
-        border-bottom: 1px solid #edf2f7;
-      }
-
-      .transport-btn {
-        width: 100%;
-        text-align: left;
-        padding: 12px 1.5rem;
-        background: #eef2f7;
-        border: none;
-        font-size: 0.9rem;
-        color: #00247d;
-        font-weight: 600;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .transport-btn:hover {
-        background: #e2e8f0;
-      }
-
-      .transport-content {
-        padding: 15px 2rem;
-        background: #ffffff;
-        font-size: 0.9rem;
-        border-left: 5px solid #00247d;
-        color: #495057;
-      }
-
-      /* 標籤與圖示樣式 */
-      .line-badge {
-        font-size: 0.75rem;
-        padding: 3px 8px;
-        border-radius: 6px;
-        color: white;
-        font-weight: bold;
-        margin: 0 5px;
-      }
-
-      .piccadilly {
-        background-color: #003688;
-      }
-
-      .district {
-        background-color: #00782a;
-      }
-
-      .central {
-        background-color: #e32017;
-      }
-
-      .bus {
-        background-color: #cf142b;
-      }
-
-      .dlr {
-        background-color: #00afad;
-      }
-
-      .plat {
-        background-color: #be9800;
-      }
-
-      .hotel-tag {
-        font-size: 0.85rem;
-        background: rgba(255, 255, 255, 0.2);
-        color: #fff;
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-weight: 500;
-      }
-
-      /* 彈出視窗與餐廳專用區塊 */
-      .modal-header {
-        border-bottom: none;
-      }
-
-      .restaurant-box {
-        background: #fff8e1;
-        border-left: 4px solid #ffc107;
-        padding: 15px;
-        border-radius: 4px;
-        margin-bottom: 15px;
-      }
     </style>
-  </head>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+                <i class="bi bi-airplane-engines-fill text-warning me-2 fs-4"></i>
+                <span>2026 倫敦行程</span>
+            </a>
+        </div>
+    </nav>
 
-  <body>
     <div class="container py-4">
-      <h2 class="text-center mb-5 fw-bold text-primary">
-        <i class="bi bi-airplane-engines-fill text-danger me-2"></i>2026
-        倫敦行程
-      </h2>
+        <!-- Hero -->
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bold text-dark mb-2">🇬🇧 2026 倫敦自助行</h1>
+            
+            <!-- Tube Line Color Legend -->
+            <div class="mt-3 d-flex flex-wrap justify-content-center gap-2">
+                <span class="line-badge piccadilly"><i class="bi bi-train-front-fill me-1"></i>Piccadilly</span>
+                <span class="line-badge district"><i class="bi bi-train-front-fill me-1"></i>District</span>
+                <span class="line-badge central"><i class="bi bi-train-front-fill me-1"></i>Central</span>
+                <span class="line-badge dlr"><i class="bi bi-train-lightrail-front-fill me-1"></i>DLR</span>
+                <span class="badge bg-danger text-white px-2 py-1" style="font-size:0.75rem; border-radius:20px;">Bus</span>
+            </div>
+        </div>
 
-      <!-- Day2 -->
-      <div class="day-section">
-        <div
-          class="day-header d-flex justify-content-between align-items-center"
-        >
-          <h2 class="h5 mb-0">
-            <i class="bi bi-calendar-event me-2"></i>Day 2 (6/7 日) 大英博物館
-          </h2>
-        </div>
-        <div class="card itinerary-card">
-          <div class="list-group-item">
-            <span class="time-label">07:40</span>
-            <div>
-              <i class="bi bi-house-door-fill text-warning me-2"></i>從飯店出發
+        <!-- Day 2 -->
+        <div class="day-section mb-5">
+            <div class="day-header d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="h4 mb-1 fw-bold"><i class="bi bi-calendar-event me-2"></i>Day 2（6/7 日）大英博物館 × 南岸</h2>
+                    <div class="small opacity-75">British Museum • Covent Garden • South Bank</div>
+                </div>
+                <div class="text-end">
+                    <span class="badge bg-white text-dark px-3 py-1">上午博物館 下午南岸</span>
+                </div>
             </div>
-          </div>
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD2_h"
-            >
-              <span
-                ><i class="bi bi-train-front-fill me-2"></i>飯店 ➔ 早餐 (地鐵 31
-                分鐘)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD2_h">
-              <p class="time-label">07:40 - 08:30</p>
-              <br />
-              上車：Earl’s Court 站<br />
-              <span class="line-badge piccadilly">Piccadilly Line</span>
-              <span class="line-badge plat">第五月台</span>
-              <br />下車：Holborn 站，第9站。<br />出站步行 8-10 分鐘。
-            </div>
-          </div>
-          <div
-            class="list-group-item"
-            data-bs-toggle="modal"
-            data-bs-target="#modalD2_1"
-          >
-            <span class="time-label">08:30 - 09:40</span>
-            <div>
-              <i class="bi bi-cup-hot-fill text-warning me-2"></i>早餐：Victoria
-              House <i class="bi bi-info-circle ms-1 text-muted"></i>
-            </div>
-          </div>
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD2_1"
-            >
-              <span
-                ><i class="bi bi-person-walking me-2"></i>早餐 ➔ 博物館 (步行
-                2-5 分鐘)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD2_1">
-              從餐廳步行約 2-5 分鐘即達。
-            </div>
-          </div>
-          <div
-            class="list-group-item"
-            data-bs-toggle="modal"
-            data-bs-target="#modalD2_2"
-          >
-            <span class="time-label">10:00 - 12:20</span>
-            <div>
-              <i class="bi bi-bank text-primary me-2"></i>大英博物館
-              <i class="bi bi-info-circle ms-1 text-muted"></i>
-            </div>
-          </div>
-          <div
-            class="list-group-item"
-            data-bs-toggle="modal"
-            data-bs-target="#modalD2_21"
-          >
-            <span class="time-label">12:30 - 13:00</span>
-            <div>
-              <i class="bi bi-bank text-primary me-2"></i
-              >博物館禮品店(大英博物館出口大廳GiftShop)
-            </div>
-          </div>
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD2_2"
-            >
-              <span
-                ><i class="bi bi-bus-front-fill me-2"></i>博物館 ➔ 午餐
-                (含公車約 15 分鐘)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD2_2">
-              <p class="time-label">13:10 - 13:30</p>
-              <br />
-              <span class="line-badge bus"
-                ><i class="bi bi-bus-front"></i> 29/24</span
-              >
-              <br />上車：Stephen Street (Stop B) <br />下車：St Martin's Place
-              (Stop K)。
-            </div>
-          </div>
-          <div
-            class="list-group-item"
-            data-bs-toggle="modal"
-            data-bs-target="#modalD2_3"
-          >
-            <span class="time-label">13:45 - 15:00</span>
-            <div>
-              <i class="bi bi-shop text-danger me-2"></i>午餐：Blacklock Covent
-              Garden <i class="bi bi-info-circle ms-1 text-muted"></i>
-            </div>
-          </div>
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD2_3"
-            >
-              <span
-                ><i class="bi bi-bus-front-fill me-2"></i>Blacklock ➔ SouthBank
-                南岸 (含公車約 25 分鐘)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD2_3">
-              <p class="time-label">15:00 - 15:25</p>
-              <br />
-              <span class="line-badge bus"
-                ><i class="bi bi-bus-front"></i> 59/68/1/172/341</span
-              >
-              <br />上車：Aldwych/DruryLane (Stop S)
-              <br />下車：WaterlooBridge/SouthBank (Stop N)
-            </div>
-          </div>
-          <div
-            class="list-group-item"
-            data-bs-toggle="modal"
-            data-bs-target="#modalD2_4"
-          >
-            <span class="time-label">15:35 - 17:20</span>
-            <div>
-              <i class="bi bi-person-walking text-primary me-2"></i>南岸漫步 ➔
-              大笨鐘<i class="bi bi-info-circle ms-1 text-muted"></i>
-            </div>
-          </div>
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD2_4"
-            >
-              <span
-                ><i class="bi bi-bus-front-fill me-2"></i>SouthBank 南岸 ➔
-                Earl's Court (含地鐵約 15 分鐘)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD2_4">
-              <p class="time-label">17:30 - 18:00</p>
-              <br />
-              上車：Westminster<br />
-              <span class="line-badge district">District Line</span>(往
-              Wimbledon/Ealing 方向) <br />下車：Earl's Court。
-            </div>
-          </div>
-        </div>
-      </div>
+            
+            <div class="card itinerary-card">
+                <!-- 07:40 出發 -->
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD2_h">
+                    <span class="time-label">07:40 – 08:30</span>
+                    <div class="activity-content">
+                        <i class="bi bi-train-front-fill text-primary fs-5"></i>
+                        <div>
+                            <strong>前往早餐店</strong><br>
+                            <small class="text-muted">地鐵 <span class="line-badge piccadilly">Piccadilly Line</span>（往 Cockfosters）</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD2_h">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <strong>交通資訊</strong><br>
+                            上車：<span class="highlight">Earl’s Court</span><br>
+                            下車：<span class="highlight">Holborn</span>（第9站）<br>
+                            <span class="text-danger">⚠️ 不要坐到 Russell Square（樓梯超多）</span>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>預估時間</strong><br>
+                            總計 34 分鐘（步行4 + 搭車20 + 步行10）<br>
+                            <a href="https://www.google.com/maps/dir/Earl's+Court+Station/Holborn+Station" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
+                                <i class="bi bi-map me-1"></i> Google 導航
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-      <!-- Day3 -->
-      <div class="day-section">
-        <div
-          class="day-header d-flex justify-content-between align-items-center"
-          style="background: #1c7252"
-        >
-          <h2 class="h5 mb-0">
-            <i class="bi bi-calendar-event me-2"></i>Day 3 (6/8 一) 巨石陣 &
-            溫莎 & 牛津
-          </h2>
-        </div>
-        <div class="card itinerary-card">
-          <div
-            class="list-group-item"
-            data-bs-toggle="modal"
-            data-bs-target="#modalD3_1"
-          >
-            <span class="time-label">07:00 </span>
-            <div>
-              <i class="bi bi-house-door-fill text-warning me-2"></i>從飯店出發
-            </div>
-          </div>
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD3_h"
-            >
-              <span
-                ><i class="bi bi-train-front-fill me-2"></i>飯店 ➔ Victoria
-                Station (地鐵約 25-30 分鐘)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD3_h">
-              上車：Earl's Court<br />
-              <span class="line-badge district">District Line</span> (往
-              Upminster) <br />下車：Victoria Station。 <br />從 7
-              號出口出來，過馬路，找 stop11 公車站牌
-            </div>
-          </div>
-          <div
-            class="list-group-item"
-            data-bs-toggle="modal"
-            data-bs-target="#modalD3_2"
-          >
-            <span class="time-label">07:50</span>
-            <div>
-              <i class="bi bi-geo-alt-fill text-info me-2"></i>完成集合並上車
-            </div>
-          </div>
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD3_2"
-            >
-              <span
-                ><i class="bi bi-cursor-fill me-2"></i>前往巨石陣 (車程 2 小時) </span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD3_2">
-              <p class="time-label">07:50 - 09:50</p>
-            </div>
-          </div>
-          <div
-            class="list-group-item"
-            data-bs-toggle="modal"
-            data-bs-target="#modalD3_3"
-          >
-            <span class="time-label">09:50 - 11:10</span>
-            <div>
-              <i class="bi bi-bank text-success me-2"></i>巨石陣
-              <i class="bi bi-info-circle ms-1 text-muted"></i>
-            </div>
-          </div>
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD3_3"
-            >
-              <span
-                ><i class="bi bi-cursor-fill me-2"></i>前往溫莎城堡 (車程 1 小時
-                30 分鐘)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD3_3">
-              <p class="time-label">11:10 - 12:40</p>
-            </div>
-          </div>
-          <div
-            class="list-group-item"
-            data-bs-toggle="modal"
-            data-bs-target="#modalD3_4"
-          >
-            <span class="time-label">12:40 - 14:40</span>
-            <div>
-              <i class="bi bi-bank text-success me-2"></i>溫莎城堡
-              <i class="bi bi-info-circle ms-1 text-muted"></i>
-            </div>
-          </div>
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD3_4"
-            >
-              <span
-                ><i class="bi bi-walking me-2"></i>前往牛津 (車程 1 小時 10
-                分鐘)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD3_4">
-              <p class="time-label">14:40 - 15:50</p>
-            </div>
-          </div>
-          <div class="list-group-item">
-            <span class="time-label">15:50 - 17:20</span>
-            <div>
-              <i class="bi bi-bank2 text-secondary me-2"></i>牛津步行 + 講解
-            </div>
-          </div>
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD4_5"
-            >
-              <span
-                ><i class="bi bi-walking me-2"></i>回程 (車程 2 小時 10
-                分鐘)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD4_5">
-              <p class="time-label">17:20 - 19:30</p>
-              <p>下車地點:Gloucester Road Tube Station</p>
-            </div>
-          </div>
-        </div>
-      </div>
+                <!-- 早餐 -->
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD2_breakfast">
+                    <span class="time-label">08:30 – 09:40</span>
+                    <div class="activity-content">
+                        <i class="bi bi-cup-hot-fill text-warning fs-5"></i>
+                        <div>
+                            <strong>早餐：Victoria House Coffee &amp; Food</strong>
+                            <span class="badge bg-warning-subtle text-warning ms-2">1 小時 10 分鐘</span>
+                        </div>
+                    </div>
+                </div>
 
-      <!-- Day4 -->
-      <div class="day-section">
-        <div
-          class="day-header d-flex justify-content-between align-items-center"
-          style="background: #b3995d"
-        >
-          <h2 class="h5 mb-0">
-            <i class="bi bi-calendar-event me-2"></i>Day 4 (6/9 二)
-            倫敦塔與金融區
-          </h2>
-        </div>
-        <div class="card itinerary-card">
-          <div class="list-group-item">
-            <span class="time-label">08:40</span>
-            <div>
-              <i class="bi bi-house-door-fill text-warning me-2"></i>從飯店出發
-            </div>
-          </div>
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD4_h"
-            >
-              <span
-                ><i class="bi bi-train-front-fill me-2"></i>飯店 ➔ 倫敦塔
-                (含地鐵約 40 分鐘)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD4_h">
-              <p class="time-label">08:40 - 09:20</p>
-              <br />
-              上車：Earl's Court<br />
-              <span class="line-badge district">District Line</span> (往
-              Upminster)<br />
-              下車：Tower Hill。
-            </div>
-          </div>
-          <div
-            class="list-group-item"
-            data-bs-toggle="modal"
-            data-bs-target="#modalD4_1"
-          >
-            <span class="time-label">09:20 - 11:30</span>
-            <div>
-              <i class="bi bi-gem text-info me-2"></i>倫敦塔 (Tower of London)
-              <i class="bi bi-info-circle ms-1 text-muted"></i>
-            </div>
-          </div>
-          <div
-            class="list-group-item"
-            data-bs-toggle="modal"
-            data-bs-target="#modalD4_2"
-          >
-            <span class="time-label">11:30 - 12:25</span>
-            <div>
-              <i class="bi bi-gem text-info me-2"></i>倫敦塔橋 (Tower Bridge)
-              <i class="bi bi-info-circle ms-1 text-muted"></i>
-            </div>
-          </div>
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD4_1"
-            >
-              <span
-                ><i class="bi bi-cursor-fill me-2"></i>倫敦塔橋 ➔ Flat Iron
-                London Bridge (步行 20 分鐘)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD4_1">
-              往倫敦橋方向步行。
-            </div>
-          </div>
-          <div
-            class="list-group-item"
-            data-bs-toggle="modal"
-            data-bs-target="#modalD4_3"
-          >
-            <span class="time-label">12:45 - 14:15</span>
-            <div>
-              <i class="bi bi-shop text-danger me-2"></i>午餐：Flat Iron London
-              Bridge
-              <i class="bi bi-info-circle ms-1 text-muted"></i>
-            </div>
-          </div>
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD4_2"
-            >
-              <span
-                ><i class="bi bi-cursor-fill me-2"></i>Flat Iron London Bridge ➔
-                波羅市場 (步行 15 分鐘)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD4_2">
-              沿南岸步行。
-            </div>
-          </div>
-          <div class="list-group-item">
-            <span class="time-label">14:15 - 15:15</span>
-            <div>
-              <i class="bi bi-basket2-fill text-success me-2"></i>波羅市場
-            </div>
-          </div>
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD4_3"
-            >
-              <span
-                ><i class="bi bi-walking me-2"></i>市場 ➔ 女王步道 ➔ 千禧橋 ➔
-                聖保羅 (步行 25 分鐘)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD4_3">
-              <p class="time-label">15:15 - 16:30</p>
-              <br />
-              沿著泰晤士河南岸「女王步道(Queen's
-              Walk)」向西走，過千禧橋(Millennium Bridge)。<br />
-              過橋後正面迎接聖保羅圓頂，光線適合拍照
-            </div>
-          </div>
-          <div
-            class="list-group-item"
-            data-bs-toggle="modal"
-            data-bs-target="#modalD4_4"
-          >
-            <span class="time-label">16:30 - 17:30</span>
-            <div>
-              <i class="bi bi-bank2 text-secondary me-2"></i>Sky Garden
-              <i class="bi bi-info-circle ms-1 text-muted"></i>
-            </div>
-          </div>
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD4_4"
-            >
-              <span
-                ><i class="bi bi-cursor-fill me-2"></i>Sky Garden ➔
-                Duck & Waffle (步行 15-20 分鐘)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD4_4">
-              向北步行約0.5英里。
-            </div>
-          </div>
-          <div
-            class="list-group-item"
-            data-bs-toggle="modal"
-            data-bs-target="#modalD4_5"
-          >
-            <span class="time-label">18:15 - 19:30</span>
-            <div>
-              <i class="bi bi-shop text-warning me-2"></i>晚餐：Duck & Waffle
-              <i class="bi bi-info-circle ms-1 text-muted"></i>
-            </div>
-          </div>
-          <div
-            class="list-group-item"
-            data-bs-toggle="modal"
-            data-bs-target="#modalD4_6"
-          >
-            <span class="time-label">19:30</span>
-            <div>
-              <i class="bi bi-bus-front-fill text-warning me-2"></i>回程/夜遊建議 (車程約 15 分鐘)
-              <i class="bi bi-info-circle ms-1 text-muted"></i>
-            </div>
-          </div>
-        </div>
-      </div>
+                <!-- 博物館 -->
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD2_museum">
+                    <span class="time-label">10:00 – 12:20</span>
+                    <div class="activity-content">
+                        <i class="bi bi-bank2 text-primary fs-5"></i>
+                        <div>
+                            <strong>大英博物館 British Museum</strong>
+                            <span class="badge bg-primary-subtle text-primary ms-2">2 小時20分</span>
+                        </div>
+                    </div>
+                </div>
 
-      <!-- Day5 -->
-      <div class="day-section">
-        <div
-          class="day-header d-flex justify-content-between align-items-center"
-          style="background: #cf142b"
-        >
-          <h2 class="h5 mb-0">
-            <i class="bi bi-calendar-event me-2"></i>Day 5 (6/10 三)
-            白金漢宮與音樂劇
-          </h2>
-        </div>
-        <div class="card itinerary-card">
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD5_h"
-            >
-              <span
-                ><i class="bi bi-train-front-fill me-2"></i>飯店 ➔ 白金漢宮
-                (地鐵約 24 分鐘)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD5_h">
-              上車：Earl's Court
-              <span class="line-badge district">District Line</span> 至 St.
-              James’s Park 或
-              <span class="line-badge piccadilly">Piccadilly Line</span> 至
-              Green Park。
-            </div>
-          </div>
-          <div class="list-group-item">
-            <span class="time-label">11:00 - 12:00</span>
-            <div>
-              <i class="bi bi-shield-check text-secondary me-2"></i>衛兵交接儀式
-            </div>
-          </div>
-          <div
-            class="list-group-item"
-            data-bs-toggle="modal"
-            data-bs-target="#modalD5_2"
-          >
-            <span class="time-label">14:00 - 16:10</span>
-            <div>
-              <i class="bi bi-palette-fill text-info me-2"></i>國家美術館
-              <i class="bi bi-info-circle ms-1 text-muted"></i>
-            </div>
-          </div>
-          <div
-            class="list-group-item"
-            data-bs-toggle="modal"
-            data-bs-target="#modalD5_bancone"
-          >
-            <span class="time-label">17:00 - 18:20</span>
-            <div>
-              <i class="bi bi-shop text-danger me-2"></i>晚餐：Bancone
-              <i class="bi bi-info-circle ms-1 text-muted"></i>
-            </div>
-          </div>
-          <div class="list-group-item">
-            <span class="time-label">19:30 - 22:15</span>
-            <div>
-              <i class="bi bi-music-note-beamed text-dark me-2"></i
-              >音樂劇：《悲慘世界》
-            </div>
-          </div>
-        </div>
-      </div>
+                <!-- 禮品店 -->
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD2_gift">
+                    <span class="time-label">12:30 – 13:00</span>
+                    <div class="activity-content">
+                        <i class="bi bi-gift-fill text-success fs-5"></i>
+                        <div>
+                            <strong>博物館禮品店（出口 Gift Shop）</strong>
+                            <span class="badge bg-success-subtle text-success ms-2">30 分鐘</span>
+                        </div>
+                    </div>
+                </div>
 
-      <!-- Day6 -->
-      <div class="day-section">
-        <div
-          class="day-header d-flex justify-content-between align-items-center"
-          style="background: #6c757d"
-        >
-          <h2 class="h5 mb-0">
-            <i class="bi bi-calendar-event me-2"></i>Day 6 (6/11 四) V&A
-            與柯芬園
-          </h2>
-        </div>
-        <div class="card itinerary-card">
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD6_h"
-            >
-              <span
-                ><i class="bi bi-train-front-fill me-2"></i>飯店 ➔ V&A (地鐵約 5
-                分鐘)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD6_h">
-              上車：Earl's Court
-              <span class="line-badge district">District Line</span> 至 South
-              Kensington 站。
-            </div>
-          </div>
-          <div class="list-group-item">
-            <span class="time-label">10:00 - 11:00</span>
-            <div>
-              <i class="bi bi-cup-hot-fill text-warning me-2"></i>V&A Café
-              早午餐
-            </div>
-          </div>
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD6_1"
-            >
-              <span
-                ><i class="bi bi-bus-front-fill me-2"></i>V&A ➔ 哈洛德百貨 (公車
-                2 站)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD6_1">
-              上車：Stop N
-              <span class="line-badge bus"
-                ><i class="bi bi-bus-front"></i> 14/74/414</span
-              >
-              下車：Harrods (Stop KA)。
-            </div>
-          </div>
-          <div class="list-group-item">
-            <span class="time-label">15:15 - 17:00</span>
-            <div>
-              <i class="bi bi-bag-heart-fill text-danger me-2"></i>柯芬園散步
-              (市場/Lego)
-            </div>
-          </div>
-          <div
-            class="list-group-item"
-            data-bs-toggle="modal"
-            data-bs-target="#modalD6_burger"
-          >
-            <span class="time-label">16:45 - 18:40</span>
-            <div>
-              <i class="bi bi-shop text-danger me-2"></i>晚餐：Burger & Lobster
-              <i class="bi bi-info-circle ms-1 text-muted"></i>
-            </div>
-          </div>
-          <div class="list-group-item">
-            <span class="time-label">19:30 - 22:00</span>
-            <div>
-              <i class="bi bi-mask text-dark me-2"></i>音樂劇：《歌劇魅影》
-            </div>
-          </div>
-        </div>
-      </div>
+                <!-- 公車到午餐 -->
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD2_bus1">
+                    <span class="time-label">13:10 – 13:30</span>
+                    <div class="activity-content">
+                        <i class="bi bi-bus-front-fill text-danger fs-5"></i>
+                        <div>
+                            <strong>前往午餐 Blacklock Covent Garden</strong><br>
+                            <small class="text-muted">公車 <span class="line-badge bus">29/24</span>（Southbound）</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD2_bus1">
+                    <strong>公車資訊</strong><br>
+                    上車：<span class="highlight">Stephen Street (Stop B)</span><br>
+                    下車：<span class="highlight">St Martin’s Place (Stop K)</span><br>
+                    預估 15 分鐘（步行6 + 搭車4 + 步行5）<br>
+                    <a href="https://www.google.com/maps/dir/Stephen+Street+Stop+B/St+Martin%27s+Place+Stop+K" target="_blank" class="btn btn-sm btn-outline-danger mt-2 map-btn">Google 導航</a>
+                </div>
 
-      <!-- Day7 -->
-      <div class="day-section">
-        <div
-          class="day-header d-flex justify-content-between align-items-center"
-          style="background: #20c997"
-        >
-          <h2 class="h5 mb-0">
-            <i class="bi bi-calendar-event me-2"></i>Day 7 (6/12 五) 格林威治
-          </h2>
-        </div>
-        <div class="card itinerary-card">
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD7_h"
-            >
-              <span
-                ><i class="bi bi-train-front-fill me-2"></i>飯店 ➔
-                威斯敏斯特碼頭 (地鐵約 15 分鐘)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD7_h">
-              上車：Earl's Court
-              <span class="line-badge district">District Line</span> 至
-              Westminster 站。
-            </div>
-          </div>
-          <div class="list-group-item">
-            <span class="time-label">10:00 - 10:45</span>
-            <div>
-              <i class="bi bi-water text-primary me-2"></i>泰晤士河遊船 (Uber
-              Boat)
-            </div>
-          </div>
-          <div class="list-group-item">
-            <span class="time-label">11:00 - 13:00</span>
-            <div>
-              <i class="bi bi-telescope-fill text-secondary me-2"></i
-              >格林威治皇家天文台
-            </div>
-          </div>
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD7_back"
-            >
-              <span
-                ><i class="bi bi-train-lightrail-front-fill me-2"></i
-                >回程：輕軌轉地鐵</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD7_back">
-              上車：Cutty Sark <span class="line-badge dlr">DLR</span> 至 Bank
-              站轉線回飯店。
-            </div>
-          </div>
-        </div>
-      </div>
+                <!-- 午餐 -->
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD2_lunch">
+                    <span class="time-label">13:45 – 15:00</span>
+                    <div class="activity-content">
+                        <i class="bi bi-shop text-danger fs-5"></i>
+                        <div>
+                            <strong>午餐：Blacklock Covent Garden</strong>
+                            <span class="badge bg-danger-subtle text-danger ms-2">1 小時 15 分鐘</span>
+                        </div>
+                    </div>
+                </div>
 
-      <!-- Day8 -->
-      <div class="day-section">
-        <div
-          class="day-header d-flex justify-content-between align-items-center"
-          style="background: #343a40"
-        >
-          <h2 class="h5 mb-0">
-            <i class="bi bi-airplane me-2"></i>Day 8 (6/13 六) 諾丁丘 ➔ 返台
-          </h2>
+                <!-- 公車到南岸 -->
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD2_bus2">
+                    <span class="time-label">15:00 – 15:25</span>
+                    <div class="activity-content">
+                        <i class="bi bi-bus-front-fill text-danger fs-5"></i>
+                        <div>
+                            <strong>前往 South Bank 南岸</strong><br>
+                            <small class="text-muted">公車 <span class="line-badge bus">59/68/1/172/341</span>（往南）</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD2_bus2">
+                    <strong>關鍵上車點！</strong><br>
+                    上車：<span class="highlight">Aldwych/Drury Lane (Stop S)</span><br>
+                    下車：<span class="highlight">Waterloo Bridge / South Bank (Stop N)</span><br>
+                    下車後即為南岸東側<br>
+                    <a href="https://www.google.com/maps/dir/Aldwych+Drury+Lane+Stop+S/Waterloo+Bridge+South+Bank+Stop+N" target="_blank" class="btn btn-sm btn-outline-danger mt-2 map-btn">Google 導航</a>
+                </div>
+
+                <!-- 南岸漫步 -->
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD2_southbank">
+                    <span class="time-label">15:35 – 17:20</span>
+                    <div class="activity-content">
+                        <i class="bi bi-person-walking text-primary fs-5"></i>
+                        <div>
+                            <strong>南岸漫步 → 大笨鐘</strong><br>
+                            <small>倫敦眼 → 西敏橋 → Big Ben &amp; Westminster Abbey</small>
+                            <span class="badge bg-primary-subtle text-primary ms-2">1 小時 45 分鐘</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 回飯店 -->
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD2_back">
+                    <span class="time-label">17:30 – 18:00</span>
+                    <div class="activity-content">
+                        <i class="bi bi-train-front-fill text-success fs-5"></i>
+                        <div>
+                            <strong>回飯店 / 晚餐</strong><br>
+                            <small class="text-muted">地鐵 <span class="line-badge district">District Line</span>（往 Wimbledon/Ealing）</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD2_back">
+                    上車：<span class="highlight">Westminster</span><br>
+                    下車：<span class="highlight">Earl’s Court</span><br>
+                    <span class="line-badge district">District Line</span>（往 Wimbledon/Ealing）
+                    預估 15 分鐘<br>
+                    <strong>晚餐推薦（Earl’s Court 附近）：</strong><br>
+                    • MedSalleh Viet – 越南料理<br>
+                    • Maroush – 黎巴嫩料理<br>
+                    • La Pappardella – 義大利料理
+                </div>
+            </div>
         </div>
-        <div class="card itinerary-card">
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD8_h"
-            >
-              <span
-                ><i class="bi bi-train-front-fill me-2"></i>飯店 ➔ 諾丁丘 (地鐵
-                6 分鐘)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD8_h">
-              上車：Earl's Court
-              <span class="line-badge district">District Line</span> (往 Edgware
-              Road) 下車：Notting Hill Gate。
+
+        <!-- Day 3 -->
+        <div class="day-section mb-5">
+            <div class="day-header day3 d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="h4 mb-1 fw-bold"><i class="bi bi-calendar-event me-2"></i>Day 3（6/8 一）巨石陣 × 溫莎 × 牛津</h2>
+                    <div class="small opacity-75">Stonehenge • Windsor Castle • Oxford</div>
+                </div>
+                <div class="text-end">
+                    <span class="badge bg-white text-dark px-3 py-1">全日遊覽團</span>
+                </div>
             </div>
-          </div>
-          <div class="list-group-item">
-            <span class="time-label">09:30 - 11:30</span>
-            <div>
-              <i class="bi bi-camera-fill text-info me-2"></i>波多貝羅市集
+            
+            <div class="card itinerary-card">
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD3_h">
+                    <span class="time-label">07:00 – 07:30</span>
+                    <div class="activity-content">
+                        <i class="bi bi-train-front-fill text-primary fs-5"></i>
+                        <div>
+                            <strong>前往 Victoria Coach Station</strong><br>
+                            <small>地鐵 <span class="line-badge district">District Line</span> → 公車站牌 stop11</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD3_h">
+                    上車：<span class="highlight">Earl’s Court</span><br>
+                    下車：<span class="highlight">Victoria Station</span>（7號出口）<br>
+                    <span class="line-badge district">District Line</span>（往 Upminster）
+                    過馬路找 <strong>stop11 公車站牌</strong><br>
+                    預估 25 分鐘
+                </div>
+
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD3_stonehenge">
+                    <span class="time-label">07:50 – 11:10</span>
+                    <div class="activity-content">
+                        <i class="bi bi-geo-alt-fill text-info fs-5"></i>
+                        <div>
+                            <strong>巨石陣 Stonehenge</strong><br>
+                            <small>車程2 小時 + 接駁車 + 停留1 小時 20 分鐘</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD3_windsor">
+                    <span class="time-label">11:10 – 14:40</span>
+                    <div class="activity-content">
+                        <i class="bi bi-bank2 text-success fs-5"></i>
+                        <div>
+                            <strong>溫莎城堡 Windsor Castle</strong><br>
+                            <small>車程1.5 小時 + 停留2 小時（含午餐）</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD3_oxford">
+                    <span class="time-label">14:40 – 17:20</span>
+                    <div class="activity-content">
+                        <i class="bi bi-bank2 text-secondary fs-5"></i>
+                        <div>
+                            <strong>牛津 Oxford</strong><br>
+                            <small>車程1 小時10分 + 步行 + 講解</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD3_back">
+                    <span class="time-label">17:20 – 19:30</span>
+                    <div class="activity-content">
+                        <i class="bi bi-bus-front-fill text-warning fs-5"></i>
+                        <div>
+                            <strong>回程</strong><br>
+                            <small>下車：Gloucester Road Tube Station</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD3_back">
+                    全日遊覽團回程，約2 小時 10 分鐘
+                </div>
             </div>
-          </div>
-          <div class="transport-divider">
-            <button
-              class="transport-btn"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD8_1"
-            >
-              <span
-                ><i class="bi bi-train-front-fill me-2"></i>諾丁丘 ➔ 午餐 (地鐵
-                10 分鐘)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD8_1">
-              上車：Notting Hill Gate
-              <span class="line-badge central">Central Line</span> 至 Piccadilly
-              Circus 站。
-            </div>
-          </div>
-          <div
-            class="list-group-item"
-            data-bs-toggle="modal"
-            data-bs-target="#modalD8_2"
-          >
-            <span class="time-label">12:00 - 14:00</span>
-            <div>
-              <i class="bi bi-fire text-danger me-2"></i>午餐：Hawksmoor Air
-              Street <i class="bi bi-info-circle ms-1 text-muted"></i>
-            </div>
-          </div>
-          <div class="transport-divider">
-            <button
-              class="transport-btn bg-dark text-white"
-              data-bs-toggle="collapse"
-              data-bs-target="#transD8_airport"
-            >
-              <span
-                ><i class="bi bi-airplane-engines-fill text-warning me-2"></i
-                >前往希斯洛機場 (地鐵 45-50 分)</span
-              ><i class="bi bi-chevron-down"></i>
-            </button>
-            <div class="collapse transport-content" id="transD8_airport">
-              16:30 回飯店領行李。17:15 前回到 Earl's Court 搭乘
-              <span class="line-badge piccadilly">Piccadilly Line</span>
-              直達機場 T3。
-            </div>
-          </div>
         </div>
-      </div>
+
+        <!-- Day 4 -->
+        <div class="day-section mb-5">
+            <div class="day-header day4 d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="h4 mb-1 fw-bold"><i class="bi bi-calendar-event me-2"></i>Day 4（6/9 二）倫敦塔 × 金融區</h2>
+                    <div class="small opacity-75">Tower of London • Tower Bridge • Duck &amp; Waffle</div>
+                </div>
+                <div class="text-end">
+                    <span class="badge bg-white text-dark px-3 py-1">歷史 × 現代</span>
+                </div>
+            </div>
+            
+            <div class="card itinerary-card">
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD4_h">
+                    <span class="time-label">08:40 – 09:20</span>
+                    <div class="activity-content">
+                        <i class="bi bi-train-front-fill text-primary fs-5"></i>
+                        <div>
+                            <strong>前往倫敦塔</strong><br>
+                            <small>地鐵 <span class="line-badge district">District Line</span>（往 Upminster）</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD4_h">
+                    上車：<span class="highlight">Earl’s Court</span><br>
+                    下車：<span class="highlight">Tower Hill</span><br>
+                    預估 39 分鐘（步行4 + 搭車25 + 步行10）
+                </div>
+
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD4_tower">
+                    <span class="time-label">09:20 – 11:30</span>
+                    <div class="activity-content">
+                        <i class="bi bi-gem text-info fs-5"></i>
+                        <div>
+                            <strong>倫敦塔 Tower of London</strong><br>
+                            <small>預約入場 09:30 • 珠寶館 Jewel House</small>
+                            <span class="badge bg-info-subtle text-info ms-2">2 小時10分</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD4_bridge">
+                    <span class="time-label">11:30 – 12:25</span>
+                    <div class="activity-content">
+                        <i class="bi bi-gem text-info fs-5"></i>
+                        <div>
+                            <strong>倫敦塔橋 Tower Bridge</strong><br>
+                            <small>步行8分鐘，北岸 → 南岸</small>
+                            <span class="badge bg-info-subtle text-info ms-2">55 分鐘</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 步行到午餐 -->
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD4_walk1">
+                    <span class="time-label">12:25 – 12:45</span>
+                    <div class="activity-content">
+                        <i class="bi bi-person-walking text-primary fs-5"></i>
+                        <div>
+                            <strong>前往午餐 Flat Iron London Bridge</strong><br>
+                            <small>步行20分鐘</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD4_flatiron">
+                    <span class="time-label">12:45 – 14:15</span>
+                    <div class="activity-content">
+                        <i class="bi bi-shop text-danger fs-5"></i>
+                        <div>
+                            <strong>午餐：Flat Iron London Bridge</strong><br>
+                            <small>訂位姓名：I Hsuan Sung</small>
+                            <span class="badge bg-danger-subtle text-danger ms-2">1 小時 30 分鐘</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 步行到波羅市場 -->
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD4_walk2">
+                    <span class="time-label">14:15 – 14:30</span>
+                    <div class="activity-content">
+                        <i class="bi bi-person-walking text-primary fs-5"></i>
+                        <div>
+                            <strong>前往午餐 Flat Iron London Bridge</strong><br>
+                            <small>步行15分鐘</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD4_borough">
+                    <span class="time-label">14:15 – 15:15</span>
+                    <div class="activity-content">
+                        <i class="bi bi-basket2-fill text-success fs-5"></i>
+                        <div>
+                            <strong>波羅市場 Borough Market</strong><br>
+                            <small>沿南岸步行約15分鐘</small>
+                            <span class="badge bg-success-subtle text-success ms-2">1 小時</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD4_walk3">
+                    <span class="time-label">15:15 – 16:30</span>
+                    <div class="activity-content">
+                        <i class="bi bi-person-walking text-primary fs-5"></i>
+                        <div>
+                            <strong>女王步道 → 千禧橋 → 聖保羅大教堂</strong><br>
+                            <small>Queen’s Walk → Millennium Bridge</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD4_walk3">
+                    沿泰晤士河南岸「女王步道」向西走，過千禧橋後正面迎接聖保羅圓頂，光線適合拍照！<br>
+                    步行約20-25分鐘
+                </div>
+
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD4_skygarden">
+                    <span class="time-label">16:30 – 17:30</span>
+                    <div class="activity-content">
+                        <i class="bi bi-building text-secondary fs-5"></i>
+                        <div>
+                            <strong>Sky Garden</strong><br>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 步行到Duck & Waffle（Heron Tower） -->
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD4_walk4">
+                    <span class="time-label">17:30 – 18:00</span>
+                    <div class="activity-content">
+                        <i class="bi bi-person-walking text-primary fs-5"></i>
+                        <div>
+                            <strong>前往晚餐 Duck &amp; Waffle（Heron Tower）</strong><br>
+                            <small>步行15 - 20分鐘， 建議提早 5 分鐘搭電梯</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD4_duckwaffle">
+                    <span class="time-label">18:15 – 19:30</span>
+                    <div class="activity-content">
+                        <i class="bi bi-shop text-warning fs-5"></i>
+                        <div>
+                            <strong>晚餐：Duck &amp; Waffle（Heron Tower）</strong><br>
+                            <small>訂位：KaiHsiangSung • email: leah • 48 小時前免費取消</small>
+                            <span class="badge bg-warning-subtle text-warning ms-2">1 小時 30 分鐘</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD4_night">
+                    <span class="time-label">19:30 – </span>
+                    <div class="activity-content">
+                        <i class="bi bi-bus-front-fill text-warning fs-5"></i>
+                        <div>
+                            <strong>回程 / 夜遊建議</strong><br>
+                            <small>公車 <span class="line-badge bus">78/42</span></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD4_night">
+                    上車：<span class="highlight">Liverpool Street (Stop L)</span><br>
+                    下車：<span class="highlight">Tower Bridge / City Hall (Stop P)</span><br>
+                    若想夜遊塔橋南岸推薦此路線
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 5 -->
+        <div class="day-section mb-5">
+            <div class="day-header day5 d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="h4 mb-1 fw-bold"><i class="bi bi-calendar-event me-2"></i>Day 5（6/10 三）白金漢宮 × 音樂劇</h2>
+                    <div class="small opacity-75">Buckingham Palace • National Gallery • Les Misérables</div>
+                </div>
+                <div class="text-end">
+                    <span class="badge bg-white text-dark px-3 py-1">皇家 × 藝術 × 劇院</span>
+                </div>
+            </div>
+            
+            <div class="card itinerary-card">
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD5_h">
+                    <span class="time-label">09:30 – 10:00</span>
+                    <div class="activity-content">
+                        <i class="bi bi-train-front-fill text-primary fs-5"></i>
+                        <div>
+                            <strong>前往白金漢宮</strong><br>
+                            <small>地鐵 <span class="line-badge district">District Line</span> 或 <span class="line-badge piccadilly">Piccadilly Line</span></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD5_h">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <strong>交通資訊</strong><br>
+                            上車：<span class="highlight">Earl’s Court</span><br>
+                            下車：<br>
+                            <span class="line-badge district">District Line</span><span class="highlight">St. James’s Park</span>（Eastbound）<br>
+                            <span class="line-badge piccadilly">Piccadilly Line</span><span class="highlight">Green Park</span>（Eastbound）(有付費廁所)
+                        </div>
+                        <div class="col-md-6">
+                            <strong>預估時間</strong><br>
+                            總計 24 分鐘（步行4 + 搭車9 + 步行11）<br>
+                            <a href="https://maps.app.goo.gl/W7togWu26z28aMQW9" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
+                                <i class="bi bi-map me-1"></i> Google 導航
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="timeline-item">
+                    <span class="time-label">10:20</span>
+                    <div class="activity-content">
+                        <i class="bi bi-shield-check text-secondary fs-5"></i>
+                        <div>
+                            <strong>抵達維多利亞女王紀念碑</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD5_buckingham">
+                    <span class="time-label">11:00 – 12:00</span>
+                    <div class="activity-content">
+                        <i class="bi bi-shield-check text-secondary fs-5"></i>
+                        <div>
+                            <strong>衛兵交接儀式 Changing of the Guard</strong><br>
+                            <small>白金漢宮前（建議提前30分鐘到達）</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD5_admiralty">
+                    <span class="time-label">12:15 – 13:30</span>
+                    <div class="activity-content">
+                        <i class="bi bi-shop text-danger fs-5"></i>
+                        <div>
+                            <strong>午餐：The admiralty</strong>
+                            <span class="badge bg-danger-subtle text-danger ms-2">1 小時 15 分鐘</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD5_gallery">
+                    <span class="time-label">14:00 – 16:10</span>
+                    <div class="activity-content">
+                        <i class="bi bi-palette-fill text-info fs-5"></i>
+                        <div>
+                            <strong>國家美術館 National Gallery</strong><br>
+                            <small>必看11幅名作（達文西、梵谷、拉斐爾等）</small>
+                            <span class="badge bg-info-subtle text-info ms-2">2 小時</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="time-label">16:15 – 16:45</span>
+                    <div class="activity-content">
+                        <i class="bi bi-basket2-fill text-success fs-5"></i>
+                        <div>
+                            <strong>特拉法加廣場 Trafalgar Square</strong>
+                            <span class="badge bg-success-subtle text-success ms-2">30 分鐘</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD5_bancone">
+                    <span class="time-label">17:00 – 18:20</span>
+                    <div class="activity-content">
+                        <i class="bi bi-shop text-danger fs-5"></i>
+                        <div>
+                            <strong>晚餐：Bancone（義大利麵）</strong><br>
+                            <small>訂位 17:00 • 刷 8956 中信信用卡</small>
+                            <span class="badge bg-danger-subtle text-danger ms-2">1 小時 20 分鐘</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 步行到皇后劇院(Sondheim Theatre) -->
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD5_walk1">
+                    <span class="time-label">17:30 – 18:00</span>
+                    <div class="activity-content">
+                        <i class="bi bi-person-walking text-primary fs-5"></i>
+                        <div>
+                            <strong>前往皇后劇院(Sondheim Theatre)</strong><br>
+                            <small>步行10分鐘</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD5_walk1">
+                    劇院正門海報牆、大廳樓梯<br>
+                    男廁:驗票<br>
+                    女廁:靠近 stalls 入口<br>
+                    卡司表:進門左邊櫃台窗邊電視
+                </div>
+
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD5_musical">
+                    <span class="time-label">19:30 – 22:15</span>
+                    <div class="activity-content">
+                        <i class="bi bi-music-note-beamed text-dark fs-5"></i>
+                        <div>
+                            <strong>音樂劇：《悲慘世界》Les Misérables</strong><br>
+                            <small>Sondheim Theatre（建議提前15分鐘入場）</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <!-- Day 6 -->
+        <div class="day-section mb-5">
+            <div class="day-header day6 d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="h4 mb-1 fw-bold"><i class="bi bi-calendar-event me-2"></i>Day 6（6/11 四）V&amp;A 藝術與柯芬園散策</h2>
+                    <div class="small opacity-75">V&amp;A Museum • Harrods • Covent Garden • Phantom of the Opera</div>
+                </div>
+                <div class="text-end">
+                    <span class="badge bg-white text-dark px-3 py-1">博物館 × 百貨 × 音樂劇</span>
+                </div>
+            </div>
+            
+            <div class="card itinerary-card">
+                <!-- 前往 V&A -->
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD6_h">
+                    <span class="time-label">09:30 – 09:45</span>
+                    <div class="activity-content">
+                        <i class="bi bi-train-front-fill text-primary fs-5"></i>
+                        <div>
+                            <strong>前往 V&amp;A 博物館</strong><br>
+                            <small>地鐵 <span class="line-badge district">District Line</span>（往 Upminster 方向）</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD6_h">
+                    上車：<span class="highlight">Earl’s Court</span><br>
+                    下車：<span class="highlight">South Kensington</span><br>
+                    預估 15 分鐘
+                </div>
+
+                <!-- V&A Café -->
+                <div class="timeline-item">
+                    <span class="time-label">10:00 – 11:00</span>
+                    <div class="activity-content">
+                        <i class="bi bi-cup-hot-fill text-warning fs-5"></i>
+                        <div>
+                            <strong>V&amp;A Café 早午餐</strong><br>
+                            <small>Gamble Room（館內最美餐廳）</small>
+                            <span class="badge bg-warning-subtle text-warning ms-2">1 小時</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- V&A 主館 -->
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD6_va">
+                    <span class="time-label">11:00 – 12:00</span>
+                    <div class="activity-content">
+                        <i class="bi bi-bank2 text-primary fs-5"></i>
+                        <div>
+                            <strong>V&amp;A 博物館主館參觀</strong><br>
+                            <small>珠寶展廳 (Jewellery Gallery 2F)</small>
+                            <span class="badge bg-primary-subtle text-primary ms-2">1 小時</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 紀念品 -->
+                <div class="timeline-item">
+                    <span class="time-label">12:00 – 12:30</span>
+                    <div class="activity-content">
+                        <i class="bi bi-gift-fill text-success fs-5"></i>
+                        <div>
+                            <strong>V&amp;A 商店 紀念品</strong>
+                            <span class="badge bg-success-subtle text-success ms-2">30 分鐘</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 自然歷史博物館 -->
+                <div class="timeline-item">
+                    <span class="time-label">12:30 – 13:30</span>
+                    <div class="activity-content">
+                        <i class="bi bi-bank2 text-info fs-5"></i>
+                        <div>
+                            <strong>自然歷史博物館</strong>
+                            <span class="badge bg-info-subtle text-info ms-2">1 小時</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 哈洛德百貨 -->
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD6_harrods">
+                    <span class="time-label">13:30 – 15:30</span>
+                    <div class="activity-content">
+                        <i class="bi bi-bag-heart-fill text-danger fs-5"></i>
+                        <div>
+                            <strong>哈洛德百貨 Harrods</strong><br>
+                            <small>公車 14/74/414（2站）→ Food Hall + 紀念品區</small>
+                            <span class="badge bg-danger-subtle text-danger ms-2">2 小時</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD6_harrods">
+                    上車：<span class="highlight">Victoria &amp; Albert Museum (Stop N)</span><br>
+                    下車：<span class="highlight">Harrods (Stop KA)</span><br>
+                    重點：Ground Floor 食品大廳 + LG層 紀念品區
+                </div>
+
+                <!-- 柯芬園 -->
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD6_covent">
+                    <span class="time-label">15:30 – 16:45</span>
+                    <div class="activity-content">
+                        <i class="bi bi-person-walking text-primary fs-5"></i>
+                        <div>
+                            <strong>柯芬園散步 Covent Garden</strong><br>
+                            <small>Piccadilly Line → Leicester Square → 步行</small>
+                            <span class="badge bg-primary-subtle text-primary ms-2">1 小時 15 分</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD6_covent">
+                    上車：<span class="highlight">Knightsbridge</span><br>
+                    下車：<span class="highlight">Leicester Square</span>（Covent Garden 站有15層樓梯，可搭電梯）<br>
+                    亮點：Apple Market、Neal's Yard、Lego 店
+                </div>
+
+                <!-- Burger & Lobster -->
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD6_burger">
+                    <span class="time-label">16:45 – 18:45</span>
+                    <div class="activity-content">
+                        <i class="bi bi-shop text-danger fs-5"></i>
+                        <div>
+                            <strong>晚餐：Burger &amp; Lobster（Leicester Square）</strong><br>
+                            <small>訂位 16:45 • 建議龍蝦套餐分食</small>
+                            <span class="badge bg-danger-subtle text-danger ms-2">2 小時</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 歌劇魅影 -->
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD6_phantom">
+                    <span class="time-label">19:30 – 22:00</span>
+                    <div class="activity-content">
+                        <i class="bi bi-mask text-dark fs-5"></i>
+                        <div>
+                            <strong>音樂劇：《歌劇魅影》The Phantom of the Opera</strong><br>
+                            <small>His Majesty's Theatre • 步行約5分鐘</small>
+                            <span class="badge bg-dark-subtle text-dark ms-2">2.5 小時</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <!-- Day 7 -->
+        <div class="day-section mb-5">
+            <div class="day-header day7 d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="h4 mb-1 fw-bold"><i class="bi bi-calendar-event me-2"></i>Day 7（6/12 五）格林威治與泰晤士河遊船</h2>
+                    <div class="small opacity-75">Greenwich • Royal Observatory • Boat Cruise</div>
+                </div>
+                <div class="text-end">
+                    <span class="badge bg-white text-dark px-3 py-1">泰晤士河 × 天文台</span>
+                </div>
+            </div>
+            
+            <div class="card itinerary-card">
+                <!-- 前往格林威治 -->
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD7_h">
+                    <span class="time-label">09:00 – 10:00</span>
+                    <div class="activity-content">
+                        <i class="bi bi-train-front-fill text-primary fs-5"></i>
+                        <div>
+                            <strong>前往格林威治</strong><br>
+                            <small>District Line → Monument → Bank → DLR（往 Lewisham）</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD7_h">
+                    上車：<span class="highlight">Earl’s Court</span> → Monument → Bank<br>
+                    DLR 上車：<span class="highlight">Bank</span>（往 Lewisham）<br>
+                    下車：<span class="highlight">Cutty Sark for Maritime Greenwich</span><br>
+                    總計約 65 分鐘
+                </div>
+
+                <!-- 舊皇家海軍學院 -->
+                <div class="timeline-item">
+                    <span class="time-label">10:00 – 11:00</span>
+                    <div class="activity-content">
+                        <i class="bi bi-bank2 text-success fs-5"></i>
+                        <div>
+                            <strong>舊皇家海軍學院 Old Royal Naval College</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 午餐 -->
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD7_lunch">
+                    <span class="time-label">11:00 – 13:00</span>
+                    <div class="activity-content">
+                        <i class="bi bi-shop text-danger fs-5"></i>
+                        <div>
+                            <strong>午餐：Trafalgar Tavern</strong>
+                            <span class="badge bg-danger-subtle text-danger ms-2">2 小時</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 皇家天文台 -->
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD7_observatory">
+                    <span class="time-label">13:00 – 14:30</span>
+                    <div class="activity-content">
+                        <i class="bi bi-telescope-fill text-secondary fs-5"></i>
+                        <div>
+                            <strong>格林威治皇家天文台 Royal Observatory</strong><br>
+                            <small>本初子午線、航海鐘、觀景台</small>
+                            <span class="badge bg-secondary-subtle text-secondary ms-2">1.5 小時</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 國家海事博物館 -->
+                <div class="timeline-item">
+                    <span class="time-label">14:30 – 15:30</span>
+                    <div class="activity-content">
+                        <i class="bi bi-bank2 text-info fs-5"></i>
+                        <div>
+                            <strong>國家海事博物館 National Maritime Museum</strong>
+                            <span class="badge bg-info-subtle text-info ms-2">1 小時</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 搭船回程 -->
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD7_boat">
+                    <span class="time-label">15:30 –</span>
+                    <div class="activity-content">
+                        <i class="bi bi-water text-primary fs-5"></i>
+                        <div>
+                            <strong>搭船回程（Uber Boat）</strong><br>
+                            <small>Greenwich Pier → Westminster Pier</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD7_boat">
+                    上車：<span class="highlight">Greenwich Pier</span><br>
+                    下車：<span class="highlight">Westminster Pier</span><br>
+                    可使用信用卡 / Oyster 直接刷卡
+                </div>
+            </div>
+        </div>
+
+                <!-- Day 8 -->
+        <div class="day-section mb-5">
+            <div class="day-header day8 d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="h4 mb-1 fw-bold"><i class="bi bi-airplane me-2"></i>Day 8（6/13 六）諾丁山 × 返台</h2>
+                    <div class="small opacity-75">Notting Hill • Portobello Market • Hawksmoor • Heathrow</div>
+                </div>
+                <div class="text-end">
+                    <span class="badge bg-white text-dark px-3 py-1">市集 × 牛排 × 返程</span>
+                </div>
+            </div>
+            
+            <div class="card itinerary-card">
+                <!-- 前往諾丁山 -->
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD8_h">
+                    <span class="time-label">09:00 – 09:15</span>
+                    <div class="activity-content">
+                        <i class="bi bi-train-front-fill text-primary fs-5"></i>
+                        <div>
+                            <strong>前往諾丁山 Notting Hill</strong><br>
+                            <small>地鐵 District / Circle Line（往 Edgware Road）</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD8_h">
+                    上車：<span class="highlight">Earl’s Court</span><br>
+                    下車：<span class="highlight">Notting Hill Gate</span><br>
+                    預估 10 分鐘
+                </div>
+
+                <!-- 彩色街景 -->
+                <div class="timeline-item">
+                    <span class="time-label">09:20 – 09:40</span>
+                    <div class="activity-content">
+                        <i class="bi bi-camera-fill text-info fs-5"></i>
+                        <div>
+                            <strong>彩色街景快拍</strong><br>
+                            <small>Pembridge Road / Portobello Road</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portobello Market -->
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD8_market">
+                    <span class="time-label">09:40 – 11:00</span>
+                    <div class="activity-content">
+                        <i class="bi bi-shop text-success fs-5"></i>
+                        <div>
+                            <strong>波多貝羅市集 Portobello Market</strong><br>
+                            <small>Notting Hill Bookshop 周邊、南段市集</small>
+                            <span class="badge bg-success-subtle text-success ms-2">1 小時 20 分</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 前往 Hawksmoor -->
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD8_hawks">
+                    <span class="time-label">11:00 – 11:20</span>
+                    <div class="activity-content">
+                        <i class="bi bi-train-front-fill text-primary fs-5"></i>
+                        <div>
+                            <strong>前往 Hawksmoor</strong><br>
+                            <small>Central Line（往 Loughton）→ Oxford Circus</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD8_hawks">
+                    上車：<span class="highlight">Notting Hill Gate</span><br>
+                    下車：<span class="highlight">Oxford Circus</span><br>
+                    預估 20 分鐘
+                </div>
+
+                <!-- 走路到餐廳 -->
+                <div class="timeline-item">
+                    <span class="time-label">11:20 – 12:00</span>
+                    <div class="activity-content">
+                        <i class="bi bi-person-walking text-primary fs-5"></i>
+                        <div>
+                            <strong>Oxford Circus → 餐廳</strong><br>
+                            <small>沿 Regent Street 走（可順道拍 Liberty）</small>
+                            <span class="badge bg-primary-subtle text-primary ms-2">40 分鐘</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hawksmoor -->
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD8_hawksmoor">
+                    <span class="time-label">12:00 – 14:00</span>
+                    <div class="activity-content">
+                        <i class="bi bi-fire text-danger fs-5"></i>
+                        <div>
+                            <strong>午餐：Hawksmoor Air Street</strong><br>
+                            <small>訂位 12:00 • 35天乾式熟成牛排</small>
+                            <span class="badge bg-danger-subtle text-danger ms-2">2 小時</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 逛街 -->
+                <div class="timeline-item">
+                    <span class="time-label">14:00 – 16:00</span>
+                    <div class="activity-content">
+                        <i class="bi bi-bag-heart-fill text-success fs-5"></i>
+                        <div>
+                            <strong>自由逛街</strong>
+                            <span class="badge bg-success-subtle text-success ms-2">2 小時</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 拿行李回飯店 -->
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD8_luggage">
+                    <span class="time-label">16:00 – 17:10</span>
+                    <div class="activity-content">
+                        <i class="bi bi-train-front-fill text-primary fs-5"></i>
+                        <div>
+                            <strong>拿行李回飯店</strong><br>
+                            <small>Piccadilly Line 至 Earl’s Court</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD8_luggage">
+                    上車：<span class="highlight">Piccadilly Circus</span><br>
+                    下車：<span class="highlight">Earl’s Court</span><br>
+                    預估 20 分鐘
+                </div>
+
+                <!-- 前往機場 -->
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD8_airport">
+                    <span class="time-label">17:10 – 18:10</span>
+                    <div class="activity-content">
+                        <i class="bi bi-airplane-engines-fill text-warning fs-5"></i>
+                        <div>
+                            <strong>前往希斯洛機場 T3</strong><br>
+                            <small>Piccadilly Line 直達</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD8_airport">
+                    預估 45-50 分鐘<br>
+                    18:10 抵達機場<br>
+                    <strong>班機：CI82（21:10 起飛）</strong>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="modal fade" id="modalD2_1" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0">
-          <div class="modal-header bg-danger text-white">
-            <h5 class="modal-title">
-              <i class="bi bi-shop me-2"></i>Victoria House
-            </h5>
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="restaurant-box">
-              <p class="mb-1">
-                <strong
-                  ><i class="bi bi-clock-fill text-warning me-2"></i
-                  >營業時間：</strong
-                >08:00 - 16:00
-              </p>
-              <p class="mb-0">
-                <strong
-                  ><i class="bi bi-hourglass-split text-secondary me-2"></i
-                  >預計停留：</strong
-                >70 分鐘
-              </p>
+    <!-- Modals -->
+    <!-- Day2 Breakfast -->
+    <div class="modal fade" id="modalD2_breakfast" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-warning text-dark">
+                    <h5 class="modal-title"><i class="bi bi-cup-hot-fill me-2"></i>Victoria House Coffee &amp; Food</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="restaurant-box">
+                        <p><strong>營業時間：</strong>08:00 – 16:00</p>
+                        <p class="mb-0"><strong>建議停留：</strong>1 小時 10 分鐘</p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/43Hz1DESFDR1es3a9" target="_blank" class="btn btn-warning w-100">
+                        <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖
+                    </a>
+                </div>
             </div>
-            <a
-              href="https://maps.app.goo.gl/43Hz1DESFDR1es3a9"
-              target="_blank"
-              class="btn btn-outline-danger w-100 mt-2"
-              ><i class="bi bi-map-fill me-2"></i>開啟 Google 地圖</a
-            >
-          </div>
         </div>
-      </div>
     </div>
 
-    <div class="modal fade" id="modalD2_2" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0">
-          <div class="modal-header bg-primary text-white">
-            <h5 class="modal-title">
-              <i class="bi bi-bank me-2"></i>大英博物館指南
-            </h5>
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="restaurant-box">
-              <p class="mb-1">
-                <strong
-                  ><i class="bi bi-clock-fill text-warning me-2"></i
-                  >營業時間：</strong
-                >10:00 - 17:00
-              </p>
+    <!-- Day2 Museum -->
+    <div class="modal fade" id="modalD2_museum" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title"><i class="bi bi-bank2 me-2"></i>大英博物館必看動線</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="fw-bold text-primary">🏆 PDF 推薦必看動線（約2 小時 20 分）</h6>
+                    
+                    <div class="alert alert-warning py-2 mb-3">
+                        <strong>重點路線：</strong>羅塞塔石碑 → 拉美西斯二世胸像 → 亞述獵獅浮雕 → 帕德嫩石雕 → 摩艾石像 → Level 3 木乃伊
+                    </div>
+
+                    <h6 class="fw-bold text-primary">Level 0（地面層）</h6>
+                    <ol class="small">
+                        <li><strong>Room 4</strong> 羅塞塔石碑（Rosetta Stone）<br>
+                            <span class="text-muted">位於展廳入口處，是破譯埃及象形文字的關鍵，建議第一站先看。</span></li>
+                        <li><strong>Room 4</strong> 拉美西斯二世胸像（Ramesses II）<br>
+                            <span class="text-muted">往展廳深處走，這尊巨大的半身像展示了古埃及最強大法老的威嚴。</span></li>
+                        <li><strong>Room 10</strong> 亞述獵獅浮雕（Lion Hunt Reliefs）<br>
+                            <span class="text-muted">穿過 Room 4 後右轉進入亞述展區。這組浮雕生動刻畫了國王獵獅的場景，是古代敘事藝術的巔峰。</span></li>
+                        <li><strong>Room 18</strong> 帕德嫩石雕（Parthenon Sculptures）<br>
+                            <span class="text-muted">從亞述區往南走即可到達。這是一個巨大的長形展廳，展示了來自雅典衛城的壯觀大理石雕塑。</span></li>
+                        <li><strong>Room 24</strong> 摩艾石像（Moai）<br>
+                            <span class="text-muted">位於地面層後方的非洲/大洋洲展區（Wellcome Gallery）。</span></li>
+                    </ol>
+
+                    <h6 class="fw-bold text-primary mt-3">Level 3（三樓）回到大中庭搭乘電梯或走樓梯上至 3 樓。</h6>
+                    <ol class="small" start="6">
+                        <li><strong>Room 62-63</strong> 木乃伊（Mummies）<br>
+                            <span class="text-muted">埃及木乃伊展區，包含完整保存的木乃伊與陪葬品。</span></li>
+                    </ol>
+
+                    <div class="alert alert-primary py-2 mt-3 mb-0">
+                        <i class="bi bi-lightbulb me-2"></i>建議從羅塞塔石碑開始，順時針動線最順。全部走完約需 2 小時 20 分鐘。
+                    </div>
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=British+Museum" target="_blank" class="btn btn-primary w-100 mt-3">
+                        <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖
+                    </a>
+                </div>
             </div>
-            <h5 class="fw-bold text-primary">🏆 必看重點動線：</h5>
-            <h6 class="fw-bold text-primary">
-              第一階段：古埃及與亞述（Level 0）
-            </h6>
-            <p>
-              1. 羅塞塔石碑 (Rosetta Stone) - <br /><a
-                style="color: #02a43a; font-weight: bold"
-                >Room 4</a
-              >：位於展廳入口處。它是破譯埃及象形文字的關鍵，建議第一站先看。
-            </p>
-            <p>
-              2. 拉美西斯二世胸像 (Ramesses II) - <br /><a
-                style="color: #02a43a; font-weight: bold"
-                >Room 4</a
-              >：往展廳深處走，這尊巨大的半身像展示了古埃及最強大法老的威嚴。
-            </p>
-            <p>
-              3. 亞述獵獅浮雕 (Lion Hunt Reliefs) - <br /><a
-                style="color: #02a43a; font-weight: bold"
-                >Room 10</a
-              >：穿過
-              <a style="color: #02a43a; font-weight: bold">Room 4</a>
-              後右轉進入亞述展區。這組浮雕生動刻畫了國王獵獅的場景，是古代敘事藝術的巔峰。
-            </p>
-            <hr />
-            <h6 class="fw-bold text-primary">第二階段：古希臘（Level 0）</h6>
-            <p>
-              4. 帕德嫩石雕 (Parthenon Sculptures) - <br /><a
-                style="color: #02a43a; font-weight: bold"
-                >Room 18</a
-              >：從亞述區往南走即可到達。這是一個巨大的長形展廳，展示了來自雅典衛城的壯觀大理石雕塑。
-            </p>
-            <hr />
-            <h6 class="fw-bold text-primary">
-              第三階段：復活節島與二樓木乃伊（Level 0 & 3，約 40 分鐘）
-            </h6>
-            <p>
-              5. 摩艾石像 (Moai) - <br /><a
-                style="color: #02a43a; font-weight: bold"
-                >Room 24</a
-              >：位於地面層後方的非洲/大洋洲展區（Wellcome Gallery）。
-            </p>
-            <hr />
-            <p class="mb-1">
-              <i class="bi bi-clock me-2"></i><strong>建議停留：</strong>2 小時
-              20 分鐘。
-            </p>
-            <a
-              href="https://www.google.com/maps/search/?api=1&query=British+Museum"
-              target="_blank"
-              class="btn btn-primary w-100 mt-3"
-              ><i class="bi bi-map-fill me-2"></i>開啟 Google 地圖</a
-            >
-          </div>
         </div>
-      </div>
     </div>
 
-    <div class="modal fade" id="modalD2_3" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0">
-          <div class="modal-header bg-danger text-white">
-            <h5 class="modal-title">
-              <i class="bi bi-shop me-2"></i>Blacklock Covent Garden
-            </h5>
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="restaurant-box">
-              <p class="mb-1">
-                <strong
-                  ><i class="bi bi-clock-fill text-warning me-2"></i
-                  >訂位時間：</strong
-                >13:45 (保留 15 分鐘)
-              </p>
-              <p class="mb-1">
-                <strong
-                  ><i class="bi bi-person-fill text-primary me-2"></i
-                  >訂位姓名：</strong
-                >KaiHsiangSung
-              </p>
-              <p class="mb-1">
-                <strong
-                  ><i class="bi bi-ticket-fill text-success me-2"></i
-                  >訂單編號：</strong
-                >252390
-              </p>
-              <p class="mb-0">
-                <strong
-                  ><i class="bi bi-hourglass-split text-secondary me-2"></i
-                  >建議停留：</strong
-                >75 分鐘
-              </p>
+    <!-- Day2 Gift Shop -->
+    <div class="modal fade" id="modalD2_gift" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title"><i class="bi bi-gift-fill me-2"></i>大英博物館禮品店</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>位置：大英博物館出口大廳 Gift Shop</p>
+                    <p class="mb-0"><strong>建議停留：</strong>20–30 分鐘</p>
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=British+Museum+Gift+Shop" target="_blank" class="btn btn-success w-100 mt-3">
+                        <i class="bi bi-map-fill me-2"></i>導航至禮品店
+                    </a>
+                </div>
             </div>
-            <a
-              href="https://maps.google.com/?q=Blacklock+Covent+Garden"
-              target="_blank"
-              class="btn btn-outline-danger w-100 mt-2"
-              ><i class="bi bi-map-fill me-2"></i>開啟 Google 地圖</a
-            >
-          </div>
         </div>
-      </div>
     </div>
 
-    <div class="modal fade" id="modalD2_4" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0">
-          <div class="modal-header bg-primary text-white">
-            <h5 class="modal-title"><i class="bi bi-bank me-2"></i>南岸漫步</h5>
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <p>
-              步行：沿河南岸往西走，經過倫敦眼，跨西敏橋。倫敦眼、大笨鐘與西敏寺合影、泰晤士河。
-            </p>
-            <hr />
-            <p class="mb-1">
-              <i class="bi bi-clock me-2"></i><strong>建議停留：</strong>1 小時
-              15 分鐘。
-            </p>
-            <a
-              href="https://maps.app.goo.gl/6TvGVkLkUWqaTpHe9"
-              target="_blank"
-              class="btn btn-primary w-100 mt-3"
-              ><i class="bi bi-map-fill me-2"></i>開啟 Google 地圖</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modalD3_3" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0">
-          <div class="modal-header bg-primary text-white">
-            <h5 class="modal-title"><i class="bi bi-bank me-2"></i>巨石陣</h5>
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <p>換接駁車 (廁所在遊客中心)</p>
-            <hr />
-            <p class="mb-1">
-              <i class="bi bi-clock me-2"></i><strong>建議停留：</strong>1 小時
-              20 分鐘。
-            </p>
-            <a
-              href="https://maps.app.goo.gl/CB4KCK6avSL1j97w9"
-              target="_blank"
-              class="btn btn-primary w-100 mt-3"
-              ><i class="bi bi-map-fill me-2"></i>開啟 Google 地圖(遊客中心)</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modalD3_4" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0">
-          <div class="modal-header bg-primary text-white">
-            <h5 class="modal-title"><i class="bi bi-bank me-2"></i>溫莎城堡</h5>
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <p>聖喬治教堂(StGeorge’s Chapel)</p>
-            <p>國事廳(State Apartments)</p>
-            <p>瑪莉皇后的娃娃屋(Queen Mary’s)</p>
-            <hr />
-            <p class="mb-1">
-              <i class="bi bi-clock me-2"></i><strong>建議停留：</strong>2
-              小時。
-            </p>
-            <a
-              href="https://maps.app.goo.gl/s7BeW92JjWuAUq237"
-              target="_blank"
-              class="btn btn-primary w-100 mt-3"
-              ><i class="bi bi-map-fill me-2"></i>開啟 Google 地圖</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modalD4_1" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0">
-          <div class="modal-header text-white" style="background: #b3995d">
-            <h5 class="modal-title">
-              <i class="bi bi-gem me-2"></i>倫敦塔參觀攻略
-            </h5>
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <p class="mb-2">
-              <i class="bi bi-ticket-perforated-fill text-warning me-2"></i
-              ><strong>預約入場：</strong>09:30。
-            </p>
-            <p class="mb-3">
-              <i class="bi bi-lightbulb-fill text-warning me-2"></i
-              ><strong>建議動線：</strong>直攻「珠寶館 (Jewel
-              House)」參觀著名的皇冠與權杖。
-            </p>
-            <p class="mb-1">
-              <i class="bi bi-clock me-2"></i><strong>建議停留：</strong>2 小時
-              10 分鐘。
-            </p>
-            <hr />
-            <a
-              href="https://www.google.com/maps/search/?api=1&query=Tower+of+London"
-              target="_blank"
-              class="btn btn-warning text-dark w-100 mt-2"
-              ><i class="bi bi-map-fill me-2"></i>開啟 Google 地圖</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modalD4_2" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0">
-          <div class="modal-header text-white" style="background: #b3995d">
-            <h5 class="modal-title"><i class="bi bi-gem me-2"></i>倫敦塔橋</h5>
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <p>步行約 8 分鐘，從北岸橫跨橋面至南岸。</p>
-            <hr />
-            <p class="mb-1">
-              <i class="bi bi-clock me-2"></i><strong>建議停留：</strong>55
-              分鐘。
-            </p>
-            <a
-              href="https://maps.app.goo.gl/FrdtEFdkXmt4xEWn8"
-              target="_blank"
-              class="btn btn-warning text-dark w-100 mt-2"
-              ><i class="bi bi-map-fill me-2"></i>開啟 Google 地圖</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modalD4_3" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0">
-          <div class="modal-header bg-danger text-white">
-            <h5 class="modal-title">
-              <i class="bi bi-shop me-2"></i>Flat Iron London Bridge
-            </h5>
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="restaurant-box">
-              <p class="mb-1">
-                <strong
-                  ><i class="bi bi-clock-fill text-warning me-2"></i
-                  >訂位時間：</strong
-                >12:45
-              </p>
-              <p class="mb-1">
-                <strong
-                  ><i class="bi bi-person-fill text-primary me-2"></i
-                  >訂位姓名：</strong
-                >
-                I Hsuan Sung
-              </p>
-              <p class="mb-0">
-                <strong
-                  ><i class="bi bi-hourglass-split text-secondary me-2"></i
-                  >建議停留：</strong
-                >90 分鐘
-              </p>
+    <!-- Day2 Lunch Blacklock -->
+    <div class="modal fade" id="modalD2_lunch" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title"><i class="bi bi-shop me-2"></i>Blacklock Covent Garden</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="restaurant-box">
+                        <p><strong>訂位時間：</strong>13:45（保留15分鐘）</p>
+                        <p><strong>訂位姓名：</strong>KaiHsiangSung</p>
+                        <p><strong>訂單編號：</strong>252390</p>
+                        <p class="mb-0"><strong>建議停留：</strong>1 小時 15 分鐘</p>
+                    </div>
+                    <a href="https://maps.google.com/?q=Blacklock+Covent+Garden" target="_blank" class="btn btn-danger w-100">
+                        <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖
+                    </a>
+                </div>
             </div>
-            <a
-              href="https://maps.app.goo.gl/KL5GQ83XD54V4pPz9"
-              target="_blank"
-              class="btn btn-outline-danger w-100 mt-2"
-              ><i class="bi bi-map-fill me-2"></i>開啟 Google 地圖</a
-            >
-          </div>
         </div>
-      </div>
     </div>
 
-    <div class="modal fade" id="modalD4_4" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0">
-          <div class="modal-header bg-danger text-white">
-            <h5 class="modal-title">
-              <i class="bi bi-shop me-2"></i>Sky Garden
-            </h5>
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <p>步行約 8 分鐘，從北岸橫跨橋面至南岸。</p>
-            <hr />
-            <p class="mb-1">
-              <i class="bi bi-clock me-2"></i><strong>建議停留：</strong>1 小時。
-            </p>
-            <a
-              href="https://maps.app.goo.gl/af59KnrTAKFcAKJXA"
-              target="_blank"
-              class="btn btn-warning text-dark w-100 mt-2"
-              ><i class="bi bi-map-fill me-2"></i>開啟 Google 地圖</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- Day2 South Bank -->
+    <div class="modal fade" id="modalD2_southbank" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title"><i class="bi bi-person-walking me-2"></i>南岸漫步路線</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>路線：</strong></p>
+                    <ol class="small">
+                        <li>南岸休息，河岸階梯坐 10 分</li>
+                        <li>沿河南岸往西</li>
+                        <li>倫敦眼</li>
+                        <li>跨西敏橋</li>
+                        <li>大笨鐘(Big Ben) &amp; 西敏寺(Westminster Abbey) 合影</li>
 
-    <div class="modal fade" id="modalD4_5" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0">
-          <div class="modal-header bg-dark text-white">
-            <h5 class="modal-title">
-              <i class="bi bi-stars me-2"></i>Duck & Waffle 晚餐
-            </h5>
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="restaurant-box">
-              <p class="mb-1">
-                <strong
-                  ><i class="bi bi-clock-fill text-warning me-2"></i
-                  >訂位時間：</strong
-                >18:15 (保留 15 分鐘)
-              </p>
-              <p class="mb-1">
-                <strong
-                  ><i class="bi bi-person-fill text-primary me-2"></i
-                  >訂位姓名：</strong
-                >KaiHsiangSung
-              </p>
-              <p class="mb-1">
-                <strong
-                  ><i class="bi bi-envelope-fill text-success me-2"></i
-                  >Email：</strong
-                >leah
-              </p>
-              <p class="mb-0">
-                <strong
-                  ><i class="bi bi-info-circle-fill text-danger me-2"></i
-                  >備註條款：</strong
-                >48 小時前可免費取消
-              </p>
+                    </ol>
+                    <p class="mb-1"><strong>建議停留：</strong>1 小時 45 分鐘</p>
+                    <a href="https://maps.app.goo.gl/6TvGVkLkUWqaTpHe9" target="_blank" class="btn btn-primary w-100 mt-3">
+                        <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖（南岸路線）
+                    </a>
+                </div>
             </div>
-            <p>
-              <i class="bi bi-lightbulb-fill text-warning me-2"></i
-              ><strong>特色：</strong>搭乘專用電梯至 Heron
-              Tower，一邊享用鴨肉鬆餅，一邊觀看倫敦夕陽。
-            </p>
-            <a
-              href="https://maps.app.goo.gl/39Vs352hUKPYJMnC8"
-              target="_blank"
-              class="btn btn-outline-dark w-100 mt-2"
-              ><i class="bi bi-map-fill me-2"></i>導航至 Heron Tower</a
-            >
-          </div>
         </div>
-      </div>
     </div>
 
-    <div class="modal fade" id="modalD4_6" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0">
-          <div class="modal-header bg-danger text-white">
-            <h5 class="modal-title">
-              <i class="bi bi-shop me-2"></i>Sky Garden
-            </h5>
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <p>若需返回塔橋南岸：</p>
-            <span class="line-badge bus"
-                ><i class="bi bi-bus-front"></i> 78/42</span
-              >
-              <br />上車：Liverpool Street (Stop L) <br />下車：Tower Bridge / City Hall (Stop P)。
-            <hr />
-            <a
-              href="https://maps.app.goo.gl/X8kiXFRw4BQ4b19a6"
-              target="_blank"
-              class="btn btn-warning text-dark w-100 mt-2"
-              ><i class="bi bi-map-fill me-2"></i>開啟 Google 地圖</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modalD5_2" tabindex="-1">
-      <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content border-0">
-          <div class="modal-header bg-danger text-white">
-            <h5 class="modal-title">
-              <i class="bi bi-palette-fill me-2"></i>國家美術館 11 幅名作
-            </h5>
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <h6 class="fw-bold text-danger">🎨 必看清單：</h6>
-            <ul class="list-group list-group-flush mb-3">
-              <li class="list-group-item px-0 border-0 py-1">
-                <i class="bi bi-check-circle-fill text-success me-2"></i
-                >《阿諾菲尼的婚禮》(Room 52)
-              </li>
-              <li class="list-group-item px-0 border-0 py-1">
-                <i class="bi bi-check-circle-fill text-success me-2"></i
-                >達文西《岩窟聖母》(Room 51a)
-              </li>
-              <li class="list-group-item px-0 border-0 py-1">
-                <i class="bi bi-check-circle-fill text-success me-2"></i
-                >梵谷《向日葵》(Room 43)
-              </li>
-            </ul>
-            <div class="alert alert-danger py-2 mb-0" role="alert">
-              <i class="bi bi-lightbulb-fill me-2"></i
-              ><strong>小貼士：</strong>事先預約免費入場券可走快速通道。
+    <!-- Day3 Stonehenge -->
+    <div class="modal fade" id="modalD3_stonehenge" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title"><i class="bi bi-geo-alt-fill me-2"></i>巨石陣 Stonehenge</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>車程 2 小時 → 換接駁車（廁所在遊客中心）</p>
+                    <p class="mb-1"><strong>停留時間：</strong>1 小時 20 分鐘</p>
+                    <a href="https://maps.app.goo.gl/CB4KCK6avSL1j97w9" target="_blank" class="btn btn-info w-100 mt-3">
+                        <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖（遊客中心）
+                    </a>
+                </div>
             </div>
-            <a
-              href="https://maps.app.goo.gl/Epw9a5N23neCvL2BA"
-              target="_blank"
-              class="btn btn-outline-danger w-100 mt-2"
-              ><i class="bi bi-map-fill me-2"></i>開啟 Google 地圖</a
-            >
-          </div>
         </div>
-      </div>
     </div>
 
+    <!-- Day3 Windsor -->
+    <div class="modal fade" id="modalD3_windsor" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title"><i class="bi bi-bank2 me-2"></i>溫莎城堡 Windsor Castle</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>必看重點：</strong></p>
+                    <ul>
+                        <li>聖喬治教堂 St George’s Chapel</li>
+                        <li>國事廳 State Apartments</li>
+                        <li>瑪莉皇后的娃娃屋 Queen Mary’s Dolls’ House</li>
+                    </ul>
+                    <p class="mb-1"><strong>停留時間：</strong>2 小時（含午餐炸魚 + 飲料）</p>
+                    <a href="https://maps.app.goo.gl/s7BeW92JjWuAUq237" target="_blank" class="btn btn-success w-100 mt-3">
+                        <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day3 Oxford -->
+    <div class="modal fade" id="modalD3_oxford" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-secondary text-white">
+                    <h5 class="modal-title"><i class="bi bi-bank2 me-2"></i>牛津 Oxford</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>車程 1 小時 10 分鐘抵達後自由步行 + 講解</p>
+                    <p class="mb-1"><strong>停留時間：</strong>1 小時 30 分鐘</p>
+                    <a href="https://maps.app.goo.gl/oxford" target="_blank" class="btn btn-secondary w-100 mt-3">
+                        <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖（牛津市中心）
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day4 Tower of London -->
+    <div class="modal fade" id="modalD4_tower" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header" style="background: #b3995d; color: white;">
+                    <h5 class="modal-title"><i class="bi bi-gem me-2"></i>倫敦塔 Tower of London 參觀攻略</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>預約入場時間：</strong>09:30</p>
+                    <p><strong>建議動線：</strong>直攻「珠寶館 Jewel House」參觀皇冠與權杖</p>
+                    <p class="mb-1"><strong>停留時間：</strong>2 小時 10 分鐘</p>
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Tower+of+London" target="_blank" class="btn btn-warning w-100 mt-3">
+                        <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day4 Tower Bridge -->
+    <div class="modal fade" id="modalD4_bridge" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header" style="background: #b3995d; color: white;">
+                    <h5 class="modal-title"><i class="bi bi-gem me-2"></i>倫敦塔橋 Tower Bridge</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>步行約 8 分鐘，從北岸橫跨橋面至南岸</p>
+                    <p class="mb-1"><strong>停留時間：</strong>55 分鐘</p>
+                    <a href="https://maps.app.goo.gl/FrdtEFdkXmt4xEWn8" target="_blank" class="btn btn-warning w-100 mt-3">
+                        <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day4 Flat Iron -->
+    <div class="modal fade" id="modalD4_flatiron" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title"><i class="bi bi-shop me-2"></i>Flat Iron London Bridge</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="restaurant-box">
+                        <p><strong>訂位時間：</strong>12:45</p>
+                        <p><strong>訂位姓名：</strong>I Hsuan Sung</p>
+                        <p class="mb-0"><strong>建議停留：</strong>1 小時 30 分鐘</p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/KL5GQ83XD54V4pPz9" target="_blank" class="btn btn-danger w-100">
+                        <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day4 Borough Market -->
+    <div class="modal fade" id="modalD4_borough" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title"><i class="bi bi-basket2-fill me-2"></i>波羅市場 Borough Market</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>沿南岸步行約15分鐘即可抵達</p>
+                    <p class="mb-1"><strong>停留時間：</strong>1 小時</p>
+                    <a href="https://maps.app.goo.gl/boroughmarket" target="_blank" class="btn btn-success w-100 mt-3">
+                        <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day4 Sky Garden -->
+    <div class="modal fade" id="modalD4_skygarden" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-secondary text-white">
+                    <h5 class="modal-title"><i class="bi bi-building me-2"></i>Sky Garden</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Sky Garden 觀景</p>
+                    <p class="mb-1"><strong>停留時間：</strong>1 小時</p>
+                    <a href="https://maps.app.goo.gl/af59KnrTAKFcAKJXA" target="_blank" class="btn btn-secondary w-100 mt-3">
+                        <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day4 Duck & Waffle -->
+    <div class="modal fade" id="modalD4_duckwaffle" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title"><i class="bi bi-stars me-2"></i>Duck &amp; Waffle 晚餐</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="restaurant-box">
+                        <p><strong>訂位時間：</strong>18:15（保留15分鐘）</p>
+                        <p><strong>訂位姓名：</strong>KaiHsiangSung</p>
+                        <p><strong>Email：</strong>leah</p>
+                        <p class="mb-0"><strong>備註：</strong>48 小時前可免費取消</p>
+                    </div>
+                    <p><i class="bi bi-lightbulb me-2"></i><strong>特色：</strong>搭乘專用電梯至 Heron Tower，一邊享用鴨肉鬆餅，一邊觀看倫敦夕陽。</p>
+                    <a href="https://maps.app.goo.gl/39Vs352hUKPYJMnC8" target="_blank" class="btn btn-dark w-100 mt-3">
+                        <i class="bi bi-map-fill me-2"></i>導航至 Heron Tower
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day5 Borough Market -->
+    <div class="modal fade" id="modalD5_buckingham" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title"><i class="bi bi-basket2-fill me-2"></i>白金漢宮正門衛兵交接儀式</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>11:15 準時開始觀賞 衛兵交接，建議站在Victoria Memorial 或是 The Mall 入口 視野最佳 。12:00 結束後請立刻移動，以避開大量散場人潮 。</p>
+                    <p class="mb-1"><strong>停留時間：</strong>1 小時</p>
+                    <a href="https://maps.app.goo.gl/hEn7LfMb1DRrSgUFA" target="_blank" class="btn btn-success w-100 mt-3">
+                        <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day5 The admiralty -->
+    <div class="modal fade" id="modalD5_admiralty" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title"><i class="bi bi-shop me-2"></i>The admiralty 午餐</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="restaurant-box">
+                        <p><strong>用餐時間：</strong>2 小時</p>
+                    </div>
+                    <p><i class="bi bi-egg-fried me-2"></i><strong>推薦：</strong>特拉法加派 (The Trafalgar Pie)。</p>
+                    <a href="https://maps.app.goo.gl/Ytw9cSLAVu8gXkMg8" target="_blank" class="btn btn-danger w-100">
+                        <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day5 National Gallery -->
+    <div class="modal fade" id="modalD5_gallery" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title"><i class="bi bi-palette-fill me-2"></i>國家美術館 必看名作</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+
+                    <!-- 路線總覽 -->
+                    <div class="alert alert-light border py-2 mb-3">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-signpost-2-fill text-info me-2 fs-5"></i>
+                            <div>
+                                <strong>推薦路線：</strong> Sainsbury Wing（塞恩斯伯里翼） → 西翼 → 北翼 → 東翼<br>
+                                <span class="small text-muted">按年代順序一路前進，<strong>不走回頭路</strong>，共 11 幅名作</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第一站 -->
+                    <h6 class="fw-bold text-primary mb-1"><i class="bi bi-sunrise me-2"></i>第一站：文藝復興的黎明與巔峰</h6>
+                    <div class="text-muted small mb-2">位置：Sainsbury Wing（塞恩斯伯里翼）</div>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item px-0 py-2">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <strong>Jan van Eyck</strong>｜《阿諾菲尼的婚禮》（The Arnolfini Portrait）<br>
+                                    <span class="badge bg-secondary">Room 52</span>
+                                </div>
+                            </div>
+                            <small class="text-muted d-block mt-1">北方文藝復興的極致代表。畫中鏡子裡的反光、衣物的絨毛質感，以及隱藏的諸多象徵符號，絕對值得近距離細看。</small>
+                        </li>
+                        <li class="list-group-item px-0 py-2">
+                            <strong>達文西（Leonardo da Vinci）</strong>｜《岩窟聖母》（The Virgin of the Rocks）<br>
+                            <span class="badge bg-secondary">Room 51a</span><br>
+                            <small class="text-muted">大型素描《伯靈頓府畫稿》（The Burlington House Cartoon）同室展出</small>
+                        </li>
+                    </ul>
+
+                    <!-- 第二站 -->
+                    <h6 class="fw-bold text-success mb-1"><i class="bi bi-palette2 me-2"></i>第二站：威尼斯畫派的色彩革命</h6>
+                    <div class="text-muted small mb-2">位置：West Wing（西翼）</div>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item px-0 py-2">
+                            <strong>Titian（提香）</strong>｜《酒神與阿莉阿德尼》（Bacchus and Ariadne）<br>
+                            <span class="badge bg-secondary">（展間未標註）</span>
+                        </li>
+                    </ul>
+
+                    <!-- 第三站 -->
+                    <h6 class="fw-bold text-warning mb-1"><i class="bi bi-lightning-charge me-2"></i>第三站：17 世紀巴洛克與黃金時代</h6>
+                    <div class="text-muted small mb-2">位置：North Wing（北翼） — 強烈光影對比是最大特色</div>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item px-0 py-2">
+                            <strong>Caravaggio</strong>｜《以馬忤斯的晚餐》（The Supper at Emmaus）<br>
+                            <span class="badge bg-secondary">Room 32</span>
+                        </li>
+                        <li class="list-group-item px-0 py-2">
+                            <strong>Diego Velázquez</strong>｜《鏡前的維納斯》（The Rokeby Venus）<br>
+                            <span class="badge bg-secondary">Room 30</span>
+                        </li>
+                        <li class="list-group-item px-0 py-2">
+                            <strong>Peter Paul Rubens</strong>｜《參孫與大利拉》（Samson and Delilah）<br>
+                            <span class="badge bg-secondary">Room 18</span>
+                        </li>
+                        <li class="list-group-item px-0 py-2">
+                            <strong>Rembrandt</strong>｜《自畫像》（Self-Portrait at the Age of 34 或 63）<br>
+                            <span class="badge bg-secondary">Room 22</span>
+                        </li>
+                    </ul>
+
+                    <!-- 第四站 -->
+                    <h6 class="fw-bold text-danger mb-1"><i class="bi bi-brightness-high me-2"></i>第四站：浪漫主義至後印象派的狂歡</h6>
+                    <div class="text-muted small mb-2">位置：East Wing（東翼） — 畫幅較大，視覺衝擊力強</div>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item px-0 py-2">
+                            <strong>J.M.W. Turner（透納）</strong>｜《被拖去解體的戰艦無畏號》（The Fighting Temeraire）<br>
+                            <span class="badge bg-secondary">Room 40</span>
+                        </li>
+                        <li class="list-group-item px-0 py-2">
+                            <strong>Georges Seurat（秀拉）</strong>｜《阿尼埃爾浴場》（Bathers at Asnières）<br>
+                            <span class="badge bg-secondary">Room 44</span>
+                        </li>
+                        <li class="list-group-item px-0 py-2">
+                            <strong>Claude Monet（莫內）</strong>｜《睡蓮池》（The Water-Lily Pond）<br>
+                            <span class="badge bg-secondary">Room 43、44、45、46</span>
+                        </li>
+                        <li class="list-group-item px-0 py-2">
+                            <strong>Vincent van Gogh（梵谷）</strong>｜《向日葵》（Sunflowers）<br>
+                            <span class="badge bg-secondary">Room 43</span>
+                        </li>
+                    </ul>
+
+                    <!-- 參觀小貼士 -->
+                    <div class="alert alert-info py-2 mt-3 mb-0">
+                        <i class="bi bi-lightbulb me-2"></i>
+                        <strong>事先在官網預約「免費入場券」</strong>，可走快速通道！<br>
+                        建議抵達現場時，先在服務台拿免費導覽地圖。
+                    </div>
+
+                    <!-- 按鈕區 -->
+                    <div class="d-grid gap-2 mt-3">
+                        <a href="https://reurl.cc/Z28WEV" target="_blank" class="btn btn-outline-info">
+                            <i class="bi bi-search me-2"></i>畫作展廳查詢（官方地圖）
+                        </a>
+                        <a href="https://maps.app.goo.gl/Epw9a5N23neCvL2BA" target="_blank" class="btn btn-info">
+                            <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day5 Bancone -->
     <div class="modal fade" id="modalD5_bancone" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0">
-          <div class="modal-header bg-danger text-white">
-            <h5 class="modal-title">
-              <i class="bi bi-shop me-2"></i>Bancone 晚餐
-            </h5>
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="restaurant-box">
-              <p class="mb-1">
-                <strong
-                  ><i class="bi bi-clock-fill text-warning me-2"></i
-                  >訂位時間：</strong
-                >17:00
-              </p>
-              <p class="mb-1">
-                <strong
-                  ><i class="bi bi-credit-card-fill text-info me-2"></i
-                  >信用卡：</strong
-                >刷 8956 中信信用卡
-              </p>
-              <p class="mb-0">
-                <strong
-                  ><i class="bi bi-info-circle-fill text-danger me-2"></i
-                  >備註條款：</strong
-                >用餐 3 小時前免費取消
-              </p>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title"><i class="bi bi-shop me-2"></i>Bancone 晚餐</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="restaurant-box">
+                        <p><strong>訂位時間：</strong>17:00</p>
+                        <p><strong>信用卡：</strong>刷 8956 中信信用卡</p>
+                        <p class="mb-0"><strong>備註：</strong>用餐 3 小時前免費取消</p>
+                    </div>
+                    <p><i class="bi bi-egg-fried me-2"></i><strong>推薦：</strong>手工義大利麵，分食避免過飽影響看劇。</p>
+                    <a href="https://maps.app.goo.gl/dusBmgtumaM7nmC68" target="_blank" class="btn btn-danger w-100">
+                        <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖
+                    </a>
+                </div>
             </div>
-            <p>
-              <i class="bi bi-egg-fried text-warning me-2"></i
-              ><strong>推薦：</strong
-              >這家餐廳以手工義大利麵聞名，建議分食以免過飽影響看劇。
-            </p>
-            <a
-              href="https://maps.app.goo.gl/dusBmgtumaM7nmC68"
-              target="_blank"
-              class="btn btn-outline-danger w-100 mt-2"
-              ><i class="bi bi-map-fill me-2"></i>開啟 Google 地圖</a
-            >
-          </div>
         </div>
-      </div>
     </div>
 
+    <!-- Day5 Les Misérables -->
+    <div class="modal fade" id="modalD5_musical" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-warning text-dark">
+                    <h5 class="modal-title"><i class="bi bi-ticket-perforated me-2"></i>音樂劇：悲慘世界</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+
+                    <!-- 時間軸 -->
+                    <div class="mb-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="badge bg-primary fs-6 px-3 py-2 me-3">18:30</span>
+                            <div>
+                                <strong class="fs-5">抵達劇院</strong>
+                                <div class="small text-muted">Soho 劇院（West End）</div>
+                            </div>
+                        </div>
+                        
+                        <div class="ms-5 ps-3 border-start border-2 border-primary">
+                            <p class="mb-2">此時是捕捉<strong>劇院外牆</strong>與<strong>蘇活區街景</strong>光線最佳的時段。</p>
+                            <p class="mb-0">室內可拍攝優雅的大廳與經典樓梯，氛圍絕佳！</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="badge bg-success fs-6 px-3 py-2 me-3">19:00</span>
+                            <div>
+                                <strong class="fs-5">完成入場準備</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="badge bg-danger fs-6 px-3 py-2 me-3">19:30</span>
+                            <div>
+                                <strong class="fs-5">演出正式開始</strong>
+                                <div class="small text-muted">《悲慘世界》Les Misérables</div>
+                            </div>
+                        </div>
+                        
+                        <div class="ms-5 ps-3 border-start border-2 border-danger">
+                            <p class="mb-1">總演出時長約 <strong class="text-danger">2 小時 45 分鐘</strong></p>
+                            <p class="mb-0 small text-muted">（含中場休息）</p>
+                        </div>
+                    </div>
+
+                    <!-- 小提醒 -->
+                    <div class="alert alert-warning py-2 mb-0">
+                        <i class="bi bi-info-circle me-2"></i>
+                        <strong>小提醒：</strong>請提前 30 分鐘到達，完成入場準備。建議穿著舒適且正式的服裝，演出期間請將手機調至靜音。
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Day6 V&A 主館 -->
+    <div class="modal fade" id="modalD6_va" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title"><i class="bi bi-bank2 me-2"></i>V&amp;A 博物館主館</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>必看重點：</strong></p>
+                    <ul>
+                        <li>珠寶展廳 (Jewellery Gallery) – 2樓</li>
+                        <li>全球頂尖工藝與設計收藏</li>
+                    </ul>
+                    <p class="mb-1"><strong>建議停留：</strong>1 小時</p>
+                    <a href="https://www.vam.ac.uk/" target="_blank" class="btn btn-primary w-100 mt-3">
+                        <i class="bi bi-map-fill me-2"></i>開啟 V&amp;A 官網
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day6 Burger & Lobster -->
     <div class="modal fade" id="modalD6_burger" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0">
-          <div class="modal-header bg-danger text-white">
-            <h5 class="modal-title">
-              <i class="bi bi-shop me-2"></i>Burger & Lobster
-            </h5>
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="restaurant-box">
-              <p class="mb-1">
-                <strong
-                  ><i class="bi bi-clock-fill text-warning me-2"></i
-                  >訂位時間：</strong
-                >16:45
-              </p>
-              <p class="mb-0">
-                <strong
-                  ><i class="bi bi-geo-alt-fill text-success me-2"></i
-                  >分店位置：</strong
-                >Leicester Square 分店 (建議 17:20 抵達)
-              </p>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title"><i class="bi bi-shop me-2"></i>Burger &amp; Lobster</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="restaurant-box">
+                        <p><strong>訂位時間：</strong>16:45</p>
+                        <p><strong>分店：</strong>Leicester Square</p>
+                        <p class="mb-0"><strong>建議停留：</strong>2 小時</p>
+                    </div>
+                    <p><i class="bi bi-hand-thumbs-up me-2"></i><strong>推薦：</strong>龍蝦套餐，與同行夥伴分食。</p>
+                    <a href="https://maps.app.goo.gl/ceVSo8rAivcS92gf6" target="_blank" class="btn btn-danger w-100">
+                        <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖
+                    </a>
+                </div>
             </div>
-            <p>
-              <i class="bi bi-hand-thumbs-up-fill text-primary me-2"></i
-              ><strong>推薦：</strong>建議點選龍蝦套餐並與同行夥伴分食。
-            </p>
-            <a
-              href="https://maps.app.goo.gl/ceVSo8rAivcS92gf6"
-              target="_blank"
-              class="btn btn-outline-danger w-100 mt-2"
-              ><i class="bi bi-map-fill me-2"></i>開啟 Google 地圖</a
-            >
-          </div>
         </div>
-      </div>
     </div>
 
-    <div class="modal fade" id="modalD8_2" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0">
-          <div class="modal-header bg-dark text-white">
-            <h5 class="modal-title">
-              <i class="bi bi-fire me-2 text-danger"></i>Hawksmoor Air Street
-            </h5>
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="restaurant-box">
-              <p class="mb-1">
-                <strong
-                  ><i class="bi bi-clock-fill text-warning me-2"></i
-                  >訂位時間：</strong
-                >12:00 準時入座
-              </p>
-              <p class="mb-0">
-                <strong
-                  ><i class="bi bi-shop-window text-primary me-2"></i
-                  >分店位置：</strong
-                >Air Street (Piccadilly / 攝政街旁)
-              </p>
+    <!-- Day6 歌劇魅影 -->
+    <div class="modal fade" id="modalD6_phantom" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title"><i class="bi bi-mask me-2"></i>《歌劇魅影》The Phantom of the Opera</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>劇院：</strong>His Majesty's Theatre</p>
+                    <p><strong>建議入場時間：</strong>19:00 前</p>
+                    <p><strong>演出時長：</strong>約 2.5 小時</p>
+                    <div class="alert alert-warning py-2 mt-3">
+                        <i class="bi bi-info-circle me-2"></i>
+                        <strong>小提醒：</strong>此劇在倫敦已連續演出超過 30 年，機關效果與音樂極為震撼，建議提前 30 分鐘到場。
+                    </div>
+                    <a href="https://www.thephantomoftheopera.com/" target="_blank" class="btn btn-dark w-100 mt-3">
+                        <i class="bi bi-map-fill me-2"></i>開啟劇院官網
+                    </a>
+                </div>
             </div>
-            <p class="mb-3">
-              <i class="bi bi-star-fill text-warning me-2"></i
-              ><strong>推薦菜色：</strong>35
-              天乾式熟成肋眼牛排、牛油薯泥、經典調酒。
-            </p>
-            <a
-              href="https://maps.app.goo.gl/P3L7e3sQ52GsNEgJ6"
-              target="_blank"
-              class="btn btn-outline-dark w-100 mt-2"
-              ><i class="bi bi-map-fill me-2"></i>開啟 Google 地圖</a
-            >
-          </div>
         </div>
-      </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+    <!-- Day7 午餐 Trafalgar Tavern -->
+    <div class="modal fade" id="modalD7_lunch" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title"><i class="bi bi-shop me-2"></i>Trafalgar Tavern 午餐</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="restaurant-box">
+                        <p><strong>用餐時間：</strong>11:00 – 13:00（2 小時）</p>
+                        <p class="mb-0"><strong>特色：</strong>格林威治經典海景餐廳，可俯瞰泰晤士河</p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/" target="_blank" class="btn btn-danger w-100 mt-3">
+                        <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day7 皇家天文台 -->
+    <div class="modal fade" id="modalD7_observatory" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-secondary text-white">
+                    <h5 class="modal-title"><i class="bi bi-telescope-fill me-2"></i>格林威治皇家天文台</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>必看重點：</strong></p>
+                    <ul>
+                        <li>本初子午線（Prime Meridian）– 雙腳跨東西半球</li>
+                        <li>約翰·哈里森的航海鐘</li>
+                        <li>觀景台俯瞰舊皇家海軍學院與金絲雀碼頭</li>
+                    </ul>
+                    <p class="mb-1"><strong>建議停留：</strong>1.5 小時</p>
+                    <div class="alert alert-info py-2 mt-2">
+                        <i class="bi bi-lightbulb me-2"></i>建議事先在官網預約門票，節省排隊時間。
+                    </div>
+                    <a href="https://www.rmg.co.uk/royal-observatory" target="_blank" class="btn btn-secondary w-100 mt-3">
+                        <i class="bi bi-map-fill me-2"></i>開啟官網預約
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day8 Portobello Market -->
+    <div class="modal fade" id="modalD8_market" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title"><i class="bi bi-shop me-2"></i>波多貝羅市集 Portobello Market</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>必逛亮點：</strong></p>
+                    <ul>
+                        <li>Notting Hill Bookshop（知名書店）</li>
+                        <li>Portobello Road 南段古董市集</li>
+                        <li>彩色房子街景</li>
+                    </ul>
+                    <p class="mb-1"><strong>建議停留：</strong>1 小時 20 分鐘</p>
+                    <a href="https://maps.app.goo.gl/" target="_blank" class="btn btn-success w-100 mt-3">
+                        <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day8 Hawksmoor -->
+    <div class="modal fade" id="modalD8_hawksmoor" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title"><i class="bi bi-fire me-2 text-danger"></i>Hawksmoor Air Street</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="restaurant-box">
+                        <p><strong>訂位時間：</strong>12:00 準時入座</p>
+                        <p><strong>位置：</strong>Air Street（Piccadilly / 攝政街旁）</p>
+                        <p class="mb-0"><strong>建議停留：</strong>2 小時</p>
+                    </div>
+                    <p><i class="bi bi-star-fill me-2 text-warning"></i><strong>推薦菜色：</strong>35天乾式熟成肋眼牛排、牛油薯泥</p>
+                    <a href="https://maps.app.goo.gl/P3L7e3sQ52GsNEgJ6" target="_blank" class="btn btn-dark w-100">
+                        <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Optional: Auto-collapse other sections when one opens (for better UX)
+        document.querySelectorAll('.transport-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const target = this.getAttribute('data-bs-target');
+                document.querySelectorAll('.collapse').forEach(c => {
+                    if (c.id !== target.replace('#', '')) {
+                        const bsCollapse = bootstrap.Collapse.getInstance(c);
+                        if (bsCollapse) bsCollapse.hide();
+                    }
+                });
+            });
+        });
+        
+        // Keyboard shortcut hint
+        console.log('%c[Itinerary] 按 ESC 可快速關閉所有彈窗', 'color:#6c757d');
+    </script>
+</body>
 </html>
