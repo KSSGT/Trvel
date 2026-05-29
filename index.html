@@ -137,6 +137,8 @@
         .piccadilly { background-color: #003688; }
         .district { background-color: #00782a; }
         .central { background-color: #e32017; }
+        .circle { background-color: #f2c300; }
+        .elizabeth { background-color: #7443b9; }
         .bus { background-color: #cf142b; }
         .dlr { background-color: #00afad; }
         
@@ -223,6 +225,7 @@
                 <span class="line-badge piccadilly"><i class="bi bi-train-front-fill me-1"></i>Piccadilly</span>
                 <span class="line-badge district"><i class="bi bi-train-front-fill me-1"></i>District</span>
                 <span class="line-badge central"><i class="bi bi-train-front-fill me-1"></i>Central</span>
+                <span class="line-badge circle"><i class="bi bi-train-front-fill me-1"></i>Circle</span>
                 <span class="line-badge dlr"><i class="bi bi-train-lightrail-front-fill me-1"></i>DLR</span>
                 <span class="badge bg-danger text-white px-2 py-1" style="font-size:0.75rem; border-radius:20px;">Bus</span>
             </div>
@@ -257,13 +260,13 @@
                         <div class="col-md-6">
                             <strong>交通資訊</strong><br>
                             上車：<span class="highlight">Earl’s Court</span><br>
-                            下車：<span class="highlight">Holborn</span>（第9站）<br>
+                            下車：<span class="highlight">Holborn</span>（第9站）（從Brtish Museum方向出站）<br>
                             <span class="text-danger">⚠️ 不要坐到 Russell Square（樓梯超多）</span>
                         </div>
                         <div class="col-md-6">
                             <strong>預估時間</strong><br>
                             總計 34 分鐘（步行4 + 搭車20 + 步行10）<br>
-                            <a href="https://www.google.com/maps/dir/Earl's+Court+Station/Holborn+Station" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
+                            <a href="https://maps.app.goo.gl/Sgd9BVHZhUV3KsfF9" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
                                 <i class="bi bi-map me-1"></i> Google 導航
                             </a>
                         </div>
@@ -318,11 +321,20 @@
                     </div>
                 </div>
                 <div class="collapse transport-content" id="transD2_bus1">
-                    <strong>公車資訊</strong><br>
-                    上車：<span class="highlight">Stephen Street (Stop B)</span><br>
-                    下車：<span class="highlight">St Martin’s Place (Stop K)</span><br>
-                    預估 15 分鐘（步行6 + 搭車4 + 步行5）<br>
-                    <a href="https://www.google.com/maps/dir/Stephen+Street+Stop+B/St+Martin%27s+Place+Stop+K" target="_blank" class="btn btn-sm btn-outline-danger mt-2 map-btn">Google 導航</a>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <strong>公車資訊</strong><br>
+                            上車：<span class="highlight">Stephen Street (Stop B)</span><br>
+                            下車：<span class="highlight">St Martin’s Place (Stop K)</span>（第6站）<br>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>預估時間</strong><br>
+                            總計 15 分鐘（步行6 + 搭車4 + 步行5）<br>
+                            <a href="https://maps.app.goo.gl/ZiBvhbBL835R7JAN8" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
+                                <i class="bi bi-map me-1"></i> Google 導航
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 午餐 -->
@@ -349,11 +361,21 @@
                     </div>
                 </div>
                 <div class="collapse transport-content" id="transD2_bus2">
-                    <strong>關鍵上車點！</strong><br>
-                    上車：<span class="highlight">Aldwych/Drury Lane (Stop S)</span><br>
-                    下車：<span class="highlight">Waterloo Bridge / South Bank (Stop N)</span><br>
-                    下車後即為南岸東側<br>
-                    <a href="https://www.google.com/maps/dir/Aldwych+Drury+Lane+Stop+S/Waterloo+Bridge+South+Bank+Stop+N" target="_blank" class="btn btn-sm btn-outline-danger mt-2 map-btn">Google 導航</a>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <strong>公車資訊</strong><br>
+                            上車：<span class="highlight">Aldwych/Drury Lane (Stop S)</span><br>
+                            下車：<span class="highlight">Waterloo Bridge / South Bank (Stop N)</span>（第3站）<br>
+                            下車後即為南岸東側<br>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>預估時間</strong><br>
+                            總計 15 分鐘（步行6 + 搭車4 + 步行5）<br>
+                            <a href="https://www.google.com/maps/dir/Aldwych+Drury+Lane+Stop+S/Waterloo+Bridge+South+Bank+Stop+N" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
+                                <i class="bi bi-map me-1"></i> Google 導航
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 南岸漫步 -->
@@ -381,14 +403,19 @@
                     </div>
                 </div>
                 <div class="collapse transport-content" id="transD2_back">
-                    上車：<span class="highlight">Westminster</span><br>
-                    下車：<span class="highlight">Earl’s Court</span><br>
-                    <span class="line-badge district">District Line</span>（往 Wimbledon/Ealing）
-                    預估 15 分鐘<br>
-                    <strong>晚餐推薦（Earl’s Court 附近）：</strong><br>
-                    • MedSalleh Viet – 越南料理<br>
-                    • Maroush – 黎巴嫩料理<br>
-                    • La Pappardella – 義大利料理
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            上車：<span class="highlight">Westminster</span><br>
+                            下車：<span class="highlight">Earl’s Court</span><br>
+                            預估 15 分鐘<br>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>晚餐推薦（Earl’s Court 附近）：</strong><br>
+                            • MedSalleh Viet – 越南料理<br>
+                            • Maroush – 黎巴嫩料理<br>
+                            • La Pappardella – 義大利料理
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -417,11 +444,22 @@
                     </div>
                 </div>
                 <div class="collapse transport-content" id="transD3_h">
-                    上車：<span class="highlight">Earl’s Court</span><br>
-                    下車：<span class="highlight">Victoria Station</span>（7號出口）<br>
-                    <span class="line-badge district">District Line</span>（往 Upminster）
-                    過馬路找 <strong>stop11 公車站牌</strong><br>
-                    預估 25 分鐘
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <strong>交通資訊</strong><br>
+                            上車：<span class="highlight">Earl’s Court</span><br>
+                            下車：<span class="highlight">Victoria Station</span>（第4站）（7號出口）<br>
+                            <span class="line-badge district">District Line</span>（往 Upminster）
+                            過馬路找 <strong>stop11 公車站牌</strong><br>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>預估時間</strong><br>
+                            總計 25 分鐘（步行4 + 搭車7 + 步行6）<br>
+                            <a href="https://maps.app.goo.gl/fctmZUosKLu5HDtC8" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
+                                <i class="bi bi-map me-1"></i> Google 導航
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD3_stonehenge">
@@ -497,9 +535,21 @@
                     </div>
                 </div>
                 <div class="collapse transport-content" id="transD4_h">
-                    上車：<span class="highlight">Earl’s Court</span><br>
-                    下車：<span class="highlight">Tower Hill</span><br>
-                    預估 39 分鐘（步行4 + 搭車25 + 步行10）
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <strong>交通資訊</strong><br>
+                            上車：<span class="highlight">Earl’s Court</span><br>
+                            下車：<span class="highlight">Tower Hill</span>（第13站）<br>
+                            <span class="line-badge district">District Line</span>（往 Upminster）
+                        </div>
+                        <div class="col-md-6">
+                            <strong>預估時間</strong><br>
+                            總計 39 分鐘（步行4 + 搭車25 + 步行10）<br>
+                            <a href="https://maps.app.goo.gl/AHuFsfCvJEL2UJj47" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
+                                <i class="bi bi-map me-1"></i> Google 導航
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD4_tower">
@@ -537,6 +587,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="collapse transport-content" id="transD4_walk1">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <strong>預估時間</strong><br>
+                            總計 20 分鐘（步行20）<br>
+                            <a href="https://maps.app.goo.gl/XkqiPUFnxXwdfZ3t6" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
+                                <i class="bi bi-map me-1"></i> Google 導航
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD4_flatiron">
                     <span class="time-label">12:45 – 14:15</span>
@@ -556,8 +617,19 @@
                     <div class="activity-content">
                         <i class="bi bi-person-walking text-primary fs-5"></i>
                         <div>
-                            <strong>前往午餐 Flat Iron London Bridge</strong><br>
+                            <strong>前往波羅市場 Borough Market</strong><br>
                             <small>步行15分鐘</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD4_walk2">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <strong>預估時間</strong><br>
+                            總計 15 分鐘（步行15）<br>
+                            <a href="https://maps.app.goo.gl/gRdU5e2NL8A1dTwp6" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
+                                <i class="bi bi-map me-1"></i> Google 導航
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -607,6 +679,17 @@
                         <div>
                             <strong>前往晚餐 Duck &amp; Waffle（Heron Tower）</strong><br>
                             <small>步行15 - 20分鐘， 建議提早 5 分鐘搭電梯</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD4_walk4">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <strong>預估時間</strong><br>
+                            總計 20 分鐘（步行20）<br>
+                            <a href="https://maps.app.goo.gl/fyRRzENLykUNcEQf6" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
+                                <i class="bi bi-map me-1"></i> Google 導航
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -669,20 +752,18 @@
                         <div class="col-md-6">
                             <strong>交通資訊</strong><br>
                             上車：<span class="highlight">Earl’s Court</span><br>
-                            下車：<br>
-                            <span class="line-badge district">District Line</span><span class="highlight">St. James’s Park</span>（Eastbound）<br>
-                            <span class="line-badge piccadilly">Piccadilly Line</span><span class="highlight">Green Park</span>（Eastbound）(有付費廁所)
+                            <span class="line-badge district">District Line</span>下車：<span class="highlight">St. James’s Park</span>（Eastbound）（第5站）<br>
+                            <span class="line-badge piccadilly">Piccadilly Line</span>下車：<span class="highlight">Green Park</span>（Eastbound）(有付費廁所)（第5站）
                         </div>
                         <div class="col-md-6">
                             <strong>預估時間</strong><br>
                             總計 24 分鐘（步行4 + 搭車9 + 步行11）<br>
-                            <a href="https://maps.app.goo.gl/W7togWu26z28aMQW9" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
+                            <a href="https://maps.app.goo.gl/2WfJMgAUwBFHj6yh9" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
                                 <i class="bi bi-map me-1"></i> Google 導航
                             </a>
                         </div>
                     </div>
                 </div>
-
 
                 <div class="timeline-item">
                     <span class="time-label">10:20</span>
@@ -782,102 +863,70 @@
             </div>
         </div>
 
-                <!-- Day 6 -->
+        <!-- Day 6 -->
         <div class="day-section mb-5">
             <div class="day-header day6 d-flex justify-content-between align-items-center">
                 <div>
-                    <h2 class="h4 mb-1 fw-bold"><i class="bi bi-calendar-event me-2"></i>Day 6（6/11 四）V&amp;A 藝術與柯芬園散策</h2>
-                    <div class="small opacity-75">V&amp;A Museum • Harrods • Covent Garden • Phantom of the Opera</div>
+                    <h2 class="h4 mb-1 fw-bold"><i class="bi bi-calendar-event me-2"></i>Day 6（6/11 四）諾丁山與柯芬園散步</h2>
+                    <div class="small opacity-75">Notting Hill • Portobello Market • Covent Garden • Phantom of the Opera</div>
                 </div>
                 <div class="text-end">
-                    <span class="badge bg-white text-dark px-3 py-1">博物館 × 百貨 × 音樂劇</span>
+                    <span class="badge bg-white text-dark px-3 py-1">市集 × 音樂劇</span>
                 </div>
             </div>
             
             <div class="card itinerary-card">
-                <!-- 前往 V&A -->
+                <!-- 前往諾丁山 -->
                 <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD6_h">
-                    <span class="time-label">09:30 – 09:45</span>
+                    <span class="time-label">09:00 – 09:15</span>
                     <div class="activity-content">
                         <i class="bi bi-train-front-fill text-primary fs-5"></i>
                         <div>
-                            <strong>前往 V&amp;A 博物館</strong><br>
-                            <small>地鐵 <span class="line-badge district">District Line</span>（往 Upminster 方向）</small>
+                            <strong>前往諾丁山 Notting Hill</strong><br>
+                            <small>地鐵 <span class="line-badge district">District Line</span>（往 Edgware Road）</small>
                         </div>
                     </div>
                 </div>
                 <div class="collapse transport-content" id="transD6_h">
-                    上車：<span class="highlight">Earl’s Court</span><br>
-                    下車：<span class="highlight">South Kensington</span><br>
-                    預估 15 分鐘
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <strong>交通資訊</strong><br>
+                            上車：<span class="highlight">Earl’s Court</span><br>
+                            下車：<span class="highlight">Notting Hill Gate</span>（第2站）<br>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>預估時間</strong><br>
+                            總計 10 分鐘（步行4 + 搭車5 + 步行1）<br>
+                            <a href="https://maps.app.goo.gl/aALymuWfkuTrA6Nq6" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
+                                <i class="bi bi-map me-1"></i> Google 導航
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- V&A Café -->
+                <!-- 彩色街景 -->
                 <div class="timeline-item">
-                    <span class="time-label">10:00 – 11:00</span>
+                    <span class="time-label">09:20 – 09:40</span>
                     <div class="activity-content">
-                        <i class="bi bi-cup-hot-fill text-warning fs-5"></i>
+                        <i class="bi bi-camera-fill text-info fs-5"></i>
                         <div>
-                            <strong>V&amp;A Café 早午餐</strong><br>
-                            <small>Gamble Room（館內最美餐廳）</small>
-                            <span class="badge bg-warning-subtle text-warning ms-2">1 小時</span>
+                            <strong>彩色街景快拍</strong><br>
+                            <small>Pembridge Road / Portobello Road</small>
                         </div>
                     </div>
                 </div>
 
-                <!-- V&A 主館 -->
-                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD6_va">
-                    <span class="time-label">11:00 – 12:00</span>
+                <!-- Portobello Market -->
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD8_market">
+                    <span class="time-label">09:40 – 11:00</span>
                     <div class="activity-content">
-                        <i class="bi bi-bank2 text-primary fs-5"></i>
+                        <i class="bi bi-shop text-success fs-5"></i>
                         <div>
-                            <strong>V&amp;A 博物館主館參觀</strong><br>
-                            <small>珠寶展廳 (Jewellery Gallery 2F)</small>
-                            <span class="badge bg-primary-subtle text-primary ms-2">1 小時</span>
+                            <strong>波多貝羅市集 Portobello Market</strong><br>
+                            <small>Notting Hill Bookshop 周邊、南段市集</small>
+                            <span class="badge bg-success-subtle text-success ms-2">1 小時 20 分</span>
                         </div>
                     </div>
-                </div>
-
-                <!-- 紀念品 -->
-                <div class="timeline-item">
-                    <span class="time-label">12:00 – 12:30</span>
-                    <div class="activity-content">
-                        <i class="bi bi-gift-fill text-success fs-5"></i>
-                        <div>
-                            <strong>V&amp;A 商店 紀念品</strong>
-                            <span class="badge bg-success-subtle text-success ms-2">30 分鐘</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 自然歷史博物館 -->
-                <div class="timeline-item">
-                    <span class="time-label">12:30 – 13:30</span>
-                    <div class="activity-content">
-                        <i class="bi bi-bank2 text-info fs-5"></i>
-                        <div>
-                            <strong>自然歷史博物館</strong>
-                            <span class="badge bg-info-subtle text-info ms-2">1 小時</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 哈洛德百貨 -->
-                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD6_harrods">
-                    <span class="time-label">13:30 – 15:30</span>
-                    <div class="activity-content">
-                        <i class="bi bi-bag-heart-fill text-danger fs-5"></i>
-                        <div>
-                            <strong>哈洛德百貨 Harrods</strong><br>
-                            <small>公車 14/74/414（2站）→ Food Hall + 紀念品區</small>
-                            <span class="badge bg-danger-subtle text-danger ms-2">2 小時</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="collapse transport-content" id="transD6_harrods">
-                    上車：<span class="highlight">Victoria &amp; Albert Museum (Stop N)</span><br>
-                    下車：<span class="highlight">Harrods (Stop KA)</span><br>
-                    重點：Ground Floor 食品大廳 + LG層 紀念品區
                 </div>
 
                 <!-- 柯芬園 -->
@@ -887,15 +936,27 @@
                         <i class="bi bi-person-walking text-primary fs-5"></i>
                         <div>
                             <strong>柯芬園散步 Covent Garden</strong><br>
-                            <small>Piccadilly Line → Leicester Square → 步行</small>
-                            <span class="badge bg-primary-subtle text-primary ms-2">1 小時 15 分</span>
+                            <small><span class="line-badge central">Central Line</span> → 步行</small>
+                            <span class="badge bg-primary-subtle text-primary ms-2">1 小時 15 分 +</span>
                         </div>
                     </div>
                 </div>
                 <div class="collapse transport-content" id="transD6_covent">
-                    上車：<span class="highlight">Knightsbridge</span><br>
-                    下車：<span class="highlight">Leicester Square</span>（Covent Garden 站有15層樓梯，可搭電梯）<br>
-                    亮點：Apple Market、Neal's Yard、Lego 店
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <strong>交通資訊</strong><br>
+                            上車：<span class="highlight">Notting Hill Gate</span><br>
+                            下車：<span class="highlight">Tottenham Court Road</span>（第6站）<br>
+                            亮點：Apple Market、Neal's Yard、Lego 店
+                        </div>
+                        <div class="col-md-6">
+                            <strong>預估時間</strong><br>
+                            總計 44 分鐘（步行15 + 搭車9 + 步行20）<br>
+                            <a href="https://maps.app.goo.gl/d59GAYLTLbw9oPHu5" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
+                                <i class="bi bi-map me-1"></i> Google 導航
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Burger & Lobster -->
@@ -926,15 +987,15 @@
             </div>
         </div>
 
-                <!-- Day 7 -->
+        <!-- Day 7 -->
         <div class="day-section mb-5">
             <div class="day-header day7 d-flex justify-content-between align-items-center">
                 <div>
                     <h2 class="h4 mb-1 fw-bold"><i class="bi bi-calendar-event me-2"></i>Day 7（6/12 五）格林威治與泰晤士河遊船</h2>
-                    <div class="small opacity-75">Greenwich • Royal Observatory • Boat Cruise</div>
+                    <div class="small opacity-75">Greenwich • Royal Observatory • Boat Cruise • Hawksmoor</div>
                 </div>
                 <div class="text-end">
-                    <span class="badge bg-white text-dark px-3 py-1">泰晤士河 × 天文台</span>
+                    <span class="badge bg-white text-dark px-3 py-1">泰晤士河 × 天文台 × 牛排</span>
                 </div>
             </div>
             
@@ -946,15 +1007,27 @@
                         <i class="bi bi-train-front-fill text-primary fs-5"></i>
                         <div>
                             <strong>前往格林威治</strong><br>
-                            <small>District Line → Monument → Bank → DLR（往 Lewisham）</small>
+                            <small><span class="line-badge district">District Line</span> → Monument → Bank → <span class="line-badge dlr">DLR</span>（往 Lewisham）</small>
                         </div>
                     </div>
                 </div>
                 <div class="collapse transport-content" id="transD7_h">
-                    上車：<span class="highlight">Earl’s Court</span> → Monument → Bank<br>
-                    DLR 上車：<span class="highlight">Bank</span>（往 Lewisham）<br>
-                    下車：<span class="highlight">Cutty Sark for Maritime Greenwich</span><br>
-                    總計約 65 分鐘
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <strong>交通資訊</strong><br>
+                            <span class="line-badge district">District Line</span>上車：<span class="highlight">Earl’s Court</span>（往 Upminster）<br>
+                            <span class="line-badge district">District Line</span>下車：<span class="highlight">Monument</span>（第12站）<br>
+                            <span class="line-badge dlr">DLR</span>上車：<span class="highlight">Bank</span>（往 Lewisham）<br>
+                            <span class="line-badge dlr">DLR</span>下車：<span class="highlight">Cutty Sark</span>（第10站）<br>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>預估時間</strong><br>
+                            總計 65 分鐘（步行4 + 搭車20 + 步行5 + 搭車22 + 步行5）<br>
+                            <a href="https://maps.app.goo.gl/BqkyZoC9miYvxSyM8" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
+                                <i class="bi bi-map me-1"></i> Google 導航
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 舊皇家海軍學院 -->
@@ -1007,7 +1080,7 @@
 
                 <!-- 搭船回程 -->
                 <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD7_boat">
-                    <span class="time-label">15:30 –</span>
+                    <span class="time-label">15:30 – 16:10</span>
                     <div class="activity-content">
                         <i class="bi bi-water text-primary fs-5"></i>
                         <div>
@@ -1019,117 +1092,172 @@
                 <div class="collapse transport-content" id="transD7_boat">
                     上車：<span class="highlight">Greenwich Pier</span><br>
                     下車：<span class="highlight">Westminster Pier</span><br>
-                    可使用信用卡 / Oyster 直接刷卡
-                </div>
-            </div>
-        </div>
-
-                <!-- Day 8 -->
-        <div class="day-section mb-5">
-            <div class="day-header day8 d-flex justify-content-between align-items-center">
-                <div>
-                    <h2 class="h4 mb-1 fw-bold"><i class="bi bi-airplane me-2"></i>Day 8（6/13 六）諾丁山 × 返台</h2>
-                    <div class="small opacity-75">Notting Hill • Portobello Market • Hawksmoor • Heathrow</div>
-                </div>
-                <div class="text-end">
-                    <span class="badge bg-white text-dark px-3 py-1">市集 × 牛排 × 返程</span>
-                </div>
-            </div>
-            
-            <div class="card itinerary-card">
-                <!-- 前往諾丁山 -->
-                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD8_h">
-                    <span class="time-label">09:00 – 09:15</span>
-                    <div class="activity-content">
-                        <i class="bi bi-train-front-fill text-primary fs-5"></i>
-                        <div>
-                            <strong>前往諾丁山 Notting Hill</strong><br>
-                            <small>地鐵 District / Circle Line（往 Edgware Road）</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="collapse transport-content" id="transD8_h">
-                    上車：<span class="highlight">Earl’s Court</span><br>
-                    下車：<span class="highlight">Notting Hill Gate</span><br>
-                    預估 10 分鐘
-                </div>
-
-                <!-- 彩色街景 -->
-                <div class="timeline-item">
-                    <span class="time-label">09:20 – 09:40</span>
-                    <div class="activity-content">
-                        <i class="bi bi-camera-fill text-info fs-5"></i>
-                        <div>
-                            <strong>彩色街景快拍</strong><br>
-                            <small>Pembridge Road / Portobello Road</small>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portobello Market -->
-                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD8_market">
-                    <span class="time-label">09:40 – 11:00</span>
-                    <div class="activity-content">
-                        <i class="bi bi-shop text-success fs-5"></i>
-                        <div>
-                            <strong>波多貝羅市集 Portobello Market</strong><br>
-                            <small>Notting Hill Bookshop 周邊、南段市集</small>
-                            <span class="badge bg-success-subtle text-success ms-2">1 小時 20 分</span>
-                        </div>
-                    </div>
+                    可使用信用卡 / Oyster 直接刷卡<br>
+                    預估 40 分鐘
                 </div>
 
                 <!-- 前往 Hawksmoor -->
-                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD8_hawks">
-                    <span class="time-label">11:00 – 11:20</span>
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD7_hawks">
+                    <span class="time-label">16:10 – 18:30</span>
                     <div class="activity-content">
                         <i class="bi bi-train-front-fill text-primary fs-5"></i>
                         <div>
                             <strong>前往 Hawksmoor</strong><br>
-                            <small>Central Line（往 Loughton）→ Oxford Circus</small>
+                            <small>公車 <span class="line-badge bus">453/12/88/159</span></small>
                         </div>
                     </div>
                 </div>
-                <div class="collapse transport-content" id="transD8_hawks">
-                    上車：<span class="highlight">Notting Hill Gate</span><br>
-                    下車：<span class="highlight">Oxford Circus</span><br>
-                    預估 20 分鐘
-                </div>
-
-                <!-- 走路到餐廳 -->
-                <div class="timeline-item">
-                    <span class="time-label">11:20 – 12:00</span>
-                    <div class="activity-content">
-                        <i class="bi bi-person-walking text-primary fs-5"></i>
-                        <div>
-                            <strong>Oxford Circus → 餐廳</strong><br>
-                            <small>沿 Regent Street 走（可順道拍 Liberty）</small>
-                            <span class="badge bg-primary-subtle text-primary ms-2">40 分鐘</span>
+                <div class="collapse transport-content" id="transD7_hawks">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <strong>交通資訊</strong><br>
+                            上車：<span class="highlight">Westminster Stn / Parliament Square (Stop A)</span><br>
+                            下車：<span class="highlight">Piccadilly Circus</span>（第3站）<br>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>預估時間</strong><br>
+                            總計 22 分鐘（步行10 + 搭車8 + 步行4）<br>
+                            <a href="https://maps.app.goo.gl/DMoB4vUMbkfhKwZ29" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
+                                <i class="bi bi-map me-1"></i> Google 導航
+                            </a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Hawksmoor -->
-                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD8_hawksmoor">
-                    <span class="time-label">12:00 – 14:00</span>
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD7_hawksmoor">
+                    <span class="time-label">18:30 – 20:30</span>
                     <div class="activity-content">
                         <i class="bi bi-fire text-danger fs-5"></i>
                         <div>
-                            <strong>午餐：Hawksmoor Air Street</strong><br>
-                            <small>訂位 12:00 • 35天乾式熟成牛排</small>
+                            <strong>晚餐：Hawksmoor Air Street</strong><br>
+                            <small>訂位 18:30 • 35天乾式熟成牛排</small>
                             <span class="badge bg-danger-subtle text-danger ms-2">2 小時</span>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <!-- 逛街 -->
-                <div class="timeline-item">
-                    <span class="time-label">14:00 – 16:00</span>
+        <!-- Day 8 -->
+        <div class="day-section mb-5">
+            <div class="day-header day8 d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="h4 mb-1 fw-bold"><i class="bi bi-airplane me-2"></i>Day 8（6/13 六）V&amp;A 藝術 × 返台</h2>
+                    <div class="small opacity-75">V&amp;A Museum • Harrods • Heathrow</div>
+                </div>
+                <div class="text-end">
+                    <span class="badge bg-white text-dark px-3 py-1">博物館 × 百貨 × 返程</span>
+                </div>
+            </div>
+            
+            <div class="card itinerary-card">
+                <!-- 前往 V&A -->
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD8_h">
+                    <span class="time-label">09:30 – 09:45</span>
                     <div class="activity-content">
-                        <i class="bi bi-bag-heart-fill text-success fs-5"></i>
+                        <i class="bi bi-train-front-fill text-primary fs-5"></i>
                         <div>
-                            <strong>自由逛街</strong>
-                            <span class="badge bg-success-subtle text-success ms-2">2 小時</span>
+                            <strong>前往 V&A 博物館</strong><br>
+                            <small>公車 <span class="line-badge bus">C1</span></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD8_h">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <strong>交通資訊</strong><br>
+                            上車：<span class="highlight">Earl's Court Station (Stop A)</span><br>
+                            下車：<span class="highlight">Victoria and Albert Museum (Stop M)</span>（第7站）<br>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>預估時間</strong><br>
+                            總計 19 分鐘（步行4 + 搭車13 + 步行2）<br>
+                            <a href="https://maps.app.goo.gl/hA5Tocx3as2zqebq6" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
+                                <i class="bi bi-map me-1"></i> Google 導航
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- V&A Café -->
+                <div class="timeline-item">
+                    <span class="time-label">10:00 – 11:00</span>
+                    <div class="activity-content">
+                        <i class="bi bi-cup-hot-fill text-warning fs-5"></i>
+                        <div>
+                            <strong>V&amp;A Café 早午餐</strong><br>
+                            <small>Gamble Room（館內最美餐廳）</small>
+                            <span class="badge bg-warning-subtle text-warning ms-2">1 小時</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- V&A 主館 -->
+                <div class="timeline-item" data-bs-toggle="modal" data-bs-target="#modalD8_va">
+                    <span class="time-label">11:00 – 12:00</span>
+                    <div class="activity-content">
+                        <i class="bi bi-bank2 text-primary fs-5"></i>
+                        <div>
+                            <strong>V&amp;A 博物館主館參觀</strong><br>
+                            <small>珠寶展廳 (Jewellery Gallery 2F)</small>
+                            <span class="badge bg-primary-subtle text-primary ms-2">1 小時</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 紀念品 -->
+                <div class="timeline-item">
+                    <span class="time-label">12:00 – 12:30</span>
+                    <div class="activity-content">
+                        <i class="bi bi-gift-fill text-success fs-5"></i>
+                        <div>
+                            <strong>V&amp;A 商店 紀念品</strong>
+                            <span class="badge bg-success-subtle text-success ms-2">30 分鐘</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 自然歷史博物館 -->
+                <div class="timeline-item">
+                    <span class="time-label">12:30 – 13:30</span>
+                    <div class="activity-content">
+                        <i class="bi bi-bank2 text-info fs-5"></i>
+                        <div>
+                            <strong>自然歷史博物館</strong>
+                            <span class="badge bg-info-subtle text-info ms-2">1 小時</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 哈洛德百貨 -->
+                <div class="timeline-item traffic" data-bs-toggle="collapse" data-bs-target="#transD8_harrods">
+                    <span class="time-label">13:30 – 15:30</span>
+                    <div class="activity-content">
+                        <i class="bi bi-bag-heart-fill text-danger fs-5"></i>
+                        <div>
+                            <strong>哈洛德百貨 Harrods</strong><br>
+                            <small>公車 <span class="line-badge bus">14/74/414/C1</span>（2站）→ Food Hall + 紀念品區</small>
+                            <span class="badge bg-danger-subtle text-danger ms-2">2 小時</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse transport-content" id="transD8_harrods">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <strong>交通資訊</strong><br>
+                            上車：<span class="highlight">Victoria &amp; Albert Museum (Stop M)</span><br>
+                            下車：<span class="highlight">Harrods (Stop KB)</span>（第2站）<br>
+                            重點：Ground Floor 食品大廳 + LG層 紀念品區<br>
+                            <span class="highlight">注意<span class="line-badge piccadilly">Piccadilly Line</span>營運狀況</span>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>預估時間</strong><br>
+                            總計 12 分鐘（步行7 + 搭車4 + 步行1）<br>
+                            <a href="https://maps.app.goo.gl/xrnoSLBT6pqf7VQXA" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
+                                <i class="bi bi-map me-1"></i> Google 導航
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1141,14 +1269,29 @@
                         <i class="bi bi-train-front-fill text-primary fs-5"></i>
                         <div>
                             <strong>拿行李回飯店</strong><br>
-                            <small>Piccadilly Line 至 Earl’s Court</small>
+                            <small><span class="line-badge piccadilly">Piccadilly Line</span> 至 Earl’s Court</small>
                         </div>
                     </div>
                 </div>
                 <div class="collapse transport-content" id="transD8_luggage">
-                    上車：<span class="highlight">Piccadilly Circus</span><br>
-                    下車：<span class="highlight">Earl’s Court</span><br>
-                    預估 20 分鐘
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <strong>交通資訊</strong><br>
+                            <span class="line-badge piccadilly">Piccadilly Line</span>上車：<span class="highlight">Knightsbridge</span><br>
+                            <span class="line-badge piccadilly">Piccadilly Line</span>下車：<span class="highlight">Earl’s Court</span>（第3站）（6分鐘）<br>
+                            或<br>
+                            <span class="line-badge bus">C1/74</span>上車：<span class="highlight">Knightsbridge Station / Harrods (Stop KC)</span><br>
+                            <span class="line-badge bus">C1</span>下車：<span class="highlight">Earl's Court Station (Stop C)</span>（第11站）（21分鐘）<br>
+                            <span class="line-badge bus">74</span>下車：<span class="highlight">Nevern Place (Stop K)</span>（第10站）（20分鐘）<br>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>預估時間</strong><br>
+                            總計 19 分鐘（步行4 + 搭車6 + 步行4）<br>
+                            <a href="https://maps.app.goo.gl/AU1Gis69P2vN8Dn17" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
+                                <i class="bi bi-map me-1"></i> Google 導航
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 前往機場 -->
@@ -1158,14 +1301,18 @@
                         <i class="bi bi-airplane-engines-fill text-warning fs-5"></i>
                         <div>
                             <strong>前往希斯洛機場 T3</strong><br>
-                            <small>Piccadilly Line 直達</small>
+                            <small><span class="line-badge piccadilly">Piccadilly Line</span> 直達 / <span class="line-badge district">District Line</span> + <span class="line-badge elizabeth">Elizabeth Line</span></small>
                         </div>
                     </div>
                 </div>
                 <div class="collapse transport-content" id="transD8_airport">
-                    預估 45-50 分鐘<br>
+                    <span class="line-badge piccadilly">Piccadilly Line</span>預估 45-50 分鐘<br>
+                    <span class="line-badge district">District Line</span> + <span class="line-badge elizabeth">Elizabeth Line</span>預估 50-60 分鐘<br>
                     18:10 抵達機場<br>
                     <strong>班機：CI82（21:10 起飛）</strong>
+                    <a href="https://maps.app.goo.gl/WeqQxDYKSegkZvdc8" target="_blank" class="btn btn-sm btn-outline-primary mt-2 map-btn">
+                        <i class="bi bi-map me-1"></i> Google 導航
+                    </a>
                 </div>
             </div>
         </div>
@@ -1734,8 +1881,8 @@
         </div>
     </div>
 
-        <!-- Day6 V&A 主館 -->
-    <div class="modal fade" id="modalD6_va" tabindex="-1">
+    <!-- Day6 V&A 主館 -->
+    <div class="modal fade" id="modalD8_va" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow">
                 <div class="modal-header bg-primary text-white">
@@ -1817,7 +1964,7 @@
                         <p><strong>用餐時間：</strong>11:00 – 13:00（2 小時）</p>
                         <p class="mb-0"><strong>特色：</strong>格林威治經典海景餐廳，可俯瞰泰晤士河</p>
                     </div>
-                    <a href="https://maps.app.goo.gl/" target="_blank" class="btn btn-danger w-100 mt-3">
+                    <a href="https://maps.app.goo.gl/bai2PggbCMxVvetZA" target="_blank" class="btn btn-danger w-100 mt-3">
                         <i class="bi bi-map-fill me-2"></i>開啟 Google 地圖
                     </a>
                 </div>
@@ -1876,8 +2023,8 @@
         </div>
     </div>
 
-    <!-- Day8 Hawksmoor -->
-    <div class="modal fade" id="modalD8_hawksmoor" tabindex="-1">
+    <!-- Day7 Hawksmoor -->
+    <div class="modal fade" id="modalD7_hawksmoor" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow">
                 <div class="modal-header bg-dark text-white">
@@ -1886,7 +2033,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="restaurant-box">
-                        <p><strong>訂位時間：</strong>12:00 準時入座</p>
+                        <p><strong>訂位時間：</strong>18:30 準時入座</p>
                         <p><strong>位置：</strong>Air Street（Piccadilly / 攝政街旁）</p>
                         <p class="mb-0"><strong>建議停留：</strong>2 小時</p>
                     </div>
